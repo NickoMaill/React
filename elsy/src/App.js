@@ -1,7 +1,8 @@
 import React from "react";
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import Steps from "./Components/Steps";
+import Box from "./Components/box";
+import Styles from "./Styles/global.css"
 
 const tempMin = -20,
 tempMax = 40,
@@ -16,11 +17,19 @@ class App extends React.Component {
       <div className="container-fluid">
 
         <div className= "row">
-          <p>Heart : {heartMin}</p>
-          <p>Temperature : {tempMin}</p>
-          <Steps />
-          <p>Steps : {stepsMin}</p>
           
+          {/* Water */}
+          <Box bgColor="odd-box" icon = "local_drink" color = "blue" value = {15} unit = "L"/>
+
+          {/* Steps */}
+          <Box bgColor = "even-box" icon = "directions_walk" color = "black" value = {3000} unit = "Steps"/>
+
+          {/* heart */}
+          <Box bgColor="odd-box" icon = "favorite" color = "red" value = {120} unit = "BPM"/>
+
+          {/* temperature */}
+          <Box bgColor = "even-box" icon = "wb_sunny" color = "yellow" value = {-10} unit = "°C"/>
+
         </div>
 
       </div>
@@ -29,4 +38,3 @@ class App extends React.Component {
 }
 
 export default App;
-

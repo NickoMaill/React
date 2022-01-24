@@ -1,0 +1,12 @@
+.even-box{
+    background-color: #cccccc;
+}
+
+.odd-box{
+    background-color:#aaaaaa;
+}
+
+.box{
+    height: 190px;
+    padding: 8px;
+}
