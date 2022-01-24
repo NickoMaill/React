@@ -7,7 +7,7 @@ class Box extends React.Component {
 
     return (
 
-      <div className={`box col-sm-3 col-6 ${this.props.bgColor}`}>
+      <div className={`box col-sm-3 col-6 d-flex flex-column align-items-center  ${this.props.bgColor}`}>
 
         <span className= {`material-icons icons ${this.props.color}`}>{this.props.icon}</span>
         <p>{`${this.props.value} ${this.props.unit}`}</p>
