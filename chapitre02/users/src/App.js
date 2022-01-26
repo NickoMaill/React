@@ -1,5 +1,5 @@
 import React from 'react';
-import Data from './users.json';
+import data from './users.json';
 import './App.css';
 import UsersInfo from './Components/UsersInfo'
 
@@ -7,34 +7,42 @@ class App extends React.Component {
 
   constructor() {
     super()
+
     this.state = {
       users: [],
+
     };
+
   }
 
   render() {
 
-    return(
-      Data.map((users) => {
+    return (
+
+      data.map((users) => {
+
         let usersName = users.name,
-         userEmail = users.email,
-         userWebsite = users.website;
+          userEmail = users.email,
+          userWebsite = users.website;
 
 
-        return(
+        return (
 
-        <div>
-          <p>{usersName}</p>
-          <p>{userEmail}</p>
-          <p>{userWebsite}</p>
-        </div>
+          <div>
+
+            <UsersInfo 
+            name = {usersName}
+            email = {userEmail}
+            website = {userWebsite}/>
+
+          </div>
 
         )
 
       })
 
     )
-    
+
   }
 
 }
