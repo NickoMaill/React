@@ -51,13 +51,13 @@ class Box extends React.Component {
 
           <form>
             <label for="customRange1" class="form-label"></label>
-            <input type="range" class="form-range" id="customRange1"></input>
+            <input type="range" class="form-range" min={this.props.min} max={this.props.max} value={this.props.value} onChange={this.props.onInput} id="customRange2"></input>
           </form>
 
         </div>
 
       )
-      
+
     }
 
   }
