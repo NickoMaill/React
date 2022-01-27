@@ -20,11 +20,10 @@ class App extends React.Component {
 
     this.state = {
 
-      water: '0',
-      heart: '120',
-      temperature: '-10',
-      steps: '3000',
-      isWater: false
+      water: 1.5,
+      heart: 120,
+      temperature: -10,
+      steps: 3000,
 
     };
 
@@ -34,22 +33,30 @@ class App extends React.Component {
   }
 
   onStepsChange(e) {
-    this.setState({ steps: e.target.value})
+    this.setState({ steps: e.target.value })
   }
-  
+
   onHeartChange(e) {
-    this.setState({ heart: e.target.value})
+    this.setState({ heart: e.target.value })
   }
 
   onTempChange(e) {
-    this.setState({ temperature: e.target.value})
+    this.setState({ temperature: e.target.value })
+
+    if (this.state.temperature > 20) {
+      this.setState({ water: Math.round(this.state.water * 100) / 100 + 0.02})
+
+    } 
+    
+    if (this.state.temperature == 20) {
+      this.setState({ water: Math.round(this.state.water * 100) / 100 - 0.02 })
+    }
+
+    console.log(this.state.water);
   }
-
-
 
   render() {
 
-    // console.log(this.onHeartChange(e));
 
     return (
 
@@ -62,9 +69,9 @@ class App extends React.Component {
           <Box
             icon="local_drink"
             color="#3A85FF"
-            value= {this.state.water}
+            value={this.state.water}
             unit="L"
-            min = "1,5"
+            min="1,5"
           />
 
           {/* Steps */}
@@ -74,9 +81,9 @@ class App extends React.Component {
             color="black"
             value={this.state.steps}
             unit="steps"
-            min = {`${stepsMin}`}
-            max = {`${stepsMax}`}
-            onInput = {this.onStepsChange}
+            min={`${stepsMin}`}
+            max={`${stepsMax}`}
+            onInput={this.onStepsChange}
 
           />
 
@@ -84,12 +91,12 @@ class App extends React.Component {
 
           <Box
             icon="favorite"
-            color="red"
-            value = {this.state.heart}
+            color=" red"
+            value={this.state.heart}
             unit="bpm"
-            min = {`${heartMin}`}
-            max = {`${heartMax}`}
-            onInput = {this.onHeartChange}
+            min={`${heartMin}`}
+            max={`${heartMax}`}
+            onInput={this.onHeartChange}
           />
 
           {/* Temperature */}
@@ -99,16 +106,19 @@ class App extends React.Component {
             color="yellow"
             value={this.state.temperature}
             unit="°C"
-            min = {`${tempMin}`}
-            max = {`${tempMax}`}
-            onInput = {this.onTempChange}
+            min={`${tempMin}`}
+            max={`${tempMax}`}
+            onInput={this.onTempChange}
           />
 
         </div>
 
       </div>
+
     );
+
   }
+
 }
 
 export default App;

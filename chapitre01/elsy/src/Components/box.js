@@ -24,8 +24,8 @@ class Box extends React.Component {
 
           <form className="d-none">
 
-            <label for="customRange1" class="form-label"></label>
-            <input type="range" class="form-range" id="customRange1"></input>
+            <label className="form-label"></label>
+            <input type="range" className="form-range" id="customRange1"></input>
 
           </form>
 
@@ -50,8 +50,8 @@ class Box extends React.Component {
           </p>
 
           <form>
-            <label for="customRange1" class="form-label"></label>
-            <input type="range" class="form-range" min={this.props.min} max={this.props.max} value={this.props.value} onChange={this.props.onInput} id="customRange2"></input>
+            <label className="form-label"></label>
+            <input type="range" className="form-range" min={this.props.min} max={this.props.max} value={this.props.value} onChange={this.props.onInput} id="customRange2"></input>
           </form>
 
         </div>
