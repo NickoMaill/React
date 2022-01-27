@@ -13,7 +13,7 @@ class CounterSlave extends React.Component {
 
                 <div className="button-div">
 
-                <button onClick={`${this.props.increment} ${this.props.incrementSlave}`}> + </button>
+                <button onClick={this.props.increment}> + </button>
                 <button onClick={this.props.substract}> - </button>
 
                 </div>

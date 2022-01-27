@@ -16,29 +16,39 @@ class App extends React.Component {
 
   increment = () => {
     let add = this.state.count;
+    let numSLave = this.state.countSlave;
     this.setState({ count: add + 1 })
+
+    if (numSLave === add) {
+      this.setState({ countSlave: numSLave + 1 })
+    }
   }
 
-  incrementSlave = () => {
-    let addSlave = this.state.countSlave;
-    if (addSlave === this.state.count) {
-      this.setState({countSlave: this.state.count})
-    }
+  increment2 = () => {
+    let add2 = this.state.countSlave;
+    let add = this.state.count;
+    this.setState({countSlave: add2 + 1})
+  } if (add2 === ) {
+    
+  }
+
+  substract2 = () => {
+    let sub2 = this.state.countSlave;
+    this.setState({ countSlave: sub2 - 1 })
   }
 
   substract = () => {
     let sub = this.state.count;
+    let numSlave = this.state.count;
+
     this.setState({ count: sub - 1 })
 
     if (sub === 0) {
-      this.setState({count: 0})
+      this.setState({ count: 0 })
     }
-  }
 
-  substractSlave = () => {
-    let subSlave = this.slave.countSlave;
-    if (subSlave >= this.state.count) {
-      this.setState({countSlave: subSlave - 1})
+    if (sub === numSlave) {
+      this.setState({countSlave: numSlave - 1 })
     }
   }
 
@@ -48,30 +58,29 @@ class App extends React.Component {
 
       <div className='container'>
 
-      <div className='counter-div'>
+        <div className='counter-div'>
 
-        <h1>Counter</h1>
+          <h1>Counter 1</h1>
 
-        <Counter
-          count = {this.state.count}
-          increment = {() => this.increment()}
-          substract = {() => this.substract()}
-        />
+          <Counter
+            count={this.state.count}
+            increment={() => this.increment()}
+            substract={() => this.substract()}
+          />
 
-      </div>
+        </div>
 
-      <div className='counter-div'>
+        <div className='counter-div'>
 
-        <h1>Counter</h1>
+          <h1>Counter 2</h1>
 
-        <CounterSlave
-          count = {this.state.countSlave}
-          increment = {() => this.increment}
-          incrementSlave = {() => this.incrementSlave()}
-          substract = {() => this.substractSlave()}
-        />
+          <CounterSlave
+            count={this.state.countSlave}
+            increment={() => this.increment2()}
+            substract={() => this.substract2()}
+          />
 
-      </div>
+        </div>
 
       </div>
 
