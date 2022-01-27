@@ -7,10 +7,25 @@ class Box extends React.Component {
 
     return (
 
-      <div className={`box col-sm-3 col-6 d-flex flex-column align-items-center  ${this.props.bgColor}`}>
+      <div className="box col-sm-3 col-6">
 
-        <span className= {`material-icons icons ${this.props.color}`}>{this.props.icon}</span>
-        <p>{`${this.props.value} ${this.props.unit}`}</p>
+        <span
+          className="material-icons"
+          style={{ color: this.props.color, fontSize: 100 }}
+        >
+          {this.props.icon}
+        </span>
+
+        <p>
+          {this.props.value} {this.props.unit}
+        </p>
+
+        <form className={this.props.display}>
+
+        <label for="customRange1" class="form-label"></label>
+        <input type="range" class="form-range" id="customRange1"></input>
+
+        </form>
 
       </div>
 

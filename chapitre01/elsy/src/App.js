@@ -5,30 +5,67 @@ import Box from "./Components/box";
 import Styles from "./Styles/global.css"
 
 const tempMin = -20,
-tempMax = 40,
-heartMin = 80,
-heartMax = 180,
-stepsMin = 0,
-stepsMax = 50000;
+  tempMax = 40,
+  heartMin = 80,
+  heartMax = 180,
+  stepsMin = 0,
+  stepsMax = 50000;
+
 
 class App extends React.Component {
+
+  constructor() {
+
+    super()
+
+    this.state = {
+
+      water: '0',
+      heart: '120',
+      temperature: '-10',
+      steps: '3000',
+      
+    };
+
+    this.hideCursor.bind(this);
+
+  }
+
   render() {
+    
     return (
+
       <div className="container-fluid">
 
-        <div className= "row">
-          
-          {/* Water */}
-          <Box bgColor="odd-box" icon = "local_drink" color = "blue" value = {15} unit = "L"/>
+        <div className="row">
 
-          {/* Steps */}
-          <Box bgColor = "even-box" icon = "directions_walk" color = "black" value = {3000} unit = "Steps"/>
+          <Box
+            icon="local_drink"
+            color="#3A85FF"
+            value={1.5}
+            unit="L" 
+            />
 
-          {/* heart */}
-          <Box bgColor="odd-box" icon = "favorite" color = "red" value = {120} unit = "BPM"/>
+          <Box
+            icon="directions_walk"
+            color="black"
+            value={3000}
+            unit="steps" 
+            />
 
-          {/* temperature */}
-          <Box bgColor = "even-box" icon = "wb_sunny" color = "yellow" value = {-10} unit = "°C"/>
+          <Box 
+          icon="favorite" 
+          color="red" 
+          value={120} 
+          unit="bpm" 
+          />
+
+          <Box 
+          icon="wb_sunny" 
+          color="yellow" 
+          value={-10} 
+          unit="°C" 
+          />
 
         </div>
 
