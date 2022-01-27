@@ -24,15 +24,24 @@ class App extends React.Component {
       heart: '120',
       temperature: '-10',
       steps: '3000',
+      isWater: false
       
     };
 
-    this.hideCursor.bind(this);
-
+    // this.hideCursor = this.hideCursor.bind(this);
+    // this.showCursor = this.showCursor.bind(this);
   }
 
+  // hideCursor() {
+  //   this.setState({isWater: true})
+  // }
+
+  // showCursor() {
+  //   this.setState({isWater: false})
+  // }
+
   render() {
-    
+
     return (
 
       <div className="container-fluid">

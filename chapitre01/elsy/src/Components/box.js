@@ -5,31 +5,60 @@ class Box extends React.Component {
 
   render() {
 
-    return (
+    if (this.props.icon === "local_drink") {
 
-      <div className="box col-sm-3 col-6">
+      return (
 
-        <span
-          className="material-icons"
-          style={{ color: this.props.color, fontSize: 100 }}
-        >
-          {this.props.icon}
-        </span>
+        <div className="box col-sm-3 col-6">
 
-        <p>
-          {this.props.value} {this.props.unit}
-        </p>
+          <span
+            className="material-icons"
+            style={{ color: this.props.color, fontSize: 100 }}
+          >
+            {this.props.icon}
+          </span>
 
-        <form className={this.props.display}>
+          <p>
+            {this.props.value} {this.props.unit}
+          </p>
 
-        <label for="customRange1" class="form-label"></label>
-        <input type="range" class="form-range" id="customRange1"></input>
+          <form className="d-none">
 
-        </form>
+            <label for="customRange1" class="form-label"></label>
+            <input type="range" class="form-range" id="customRange1"></input>
 
-      </div>
+          </form>
 
-    );
+        </div>
+
+      )
+
+    } else {
+
+      return (
+        <div className="box col-sm-3 col-6">
+
+          <span
+            className="material-icons"
+            style={{ color: this.props.color, fontSize: 100 }}
+          >
+            {this.props.icon}
+          </span>
+
+          <p>
+            {this.props.value} {this.props.unit}
+          </p>
+
+          <form>
+            <label for="customRange1" class="form-label"></label>
+            <input type="range" class="form-range" id="customRange1"></input>
+          </form>
+
+        </div>
+
+      )
+      
+    }
 
   }
 
