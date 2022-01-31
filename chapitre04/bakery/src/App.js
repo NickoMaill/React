@@ -15,11 +15,12 @@ class App extends React.Component {
 
       activeTab: "Add",
       items: [],
+      productName: "",
+      price: 1
 
     }
 
     this.selectTab = this.selectTab.bind(this);
-
 
   }
 
@@ -60,6 +61,7 @@ class App extends React.Component {
 
           <Add
             isSelected={this.state.activeTab === "Add" ? true : false}
+            
           />
 
           <List
