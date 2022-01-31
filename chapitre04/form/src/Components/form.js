@@ -20,25 +20,25 @@ class Form extends React.Component {
                     <form className={`w-25 ${this.props.display2}`}>
 
 
-                        <div class="mb-3">
+                        <div className="mb-3">
 
-                            <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input type="email" className={`form-control ${this.props.mailValid}`} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email..." />
+                            <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+                            <input type="email" className={`form-control ${this.props.mailValid}`} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email..." onInput={this.props.onInputMail}/>
                             <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
 
                         </div>
 
-                        <div class="mb-3">
+                        <div className="mb-3">
 
-                            <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" className={`form-control ${this.props.passValid}`} id="exampleInputPassword1" placeholder="Enter password..." />
+                            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                            <input type="password" className={`form-control ${this.props.passValid}`} id="exampleInputPassword1" placeholder="Enter password..." onInput={this.props.onInputPass}/>
 
                         </div>
 
-                        <div class="mb-3 form-check">
+                        <div className="mb-3 form-check">
 
                             <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                            <label className="form-check-label" for="exampleCheck1">Remember Me</label>
+                            <label className="form-check-label" htmlFor="exampleCheck1">Remember Me</label>
 
                         </div>
 
