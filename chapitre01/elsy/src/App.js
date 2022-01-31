@@ -43,16 +43,14 @@ class App extends React.Component {
   onTempChange(e) {
     this.setState({ temperature: e.target.value })
 
-    if (this.state.temperature > 20) {
-      this.setState({ water: Math.round(this.state.water * 100) / 100 + 0.02})
+    if (++this.state.temperature >= 20) {
+      this.setState({ water: Math.round(this.state.water * 100) / 100 + 0.02 })
 
-    } 
-    
-    if (this.state.temperature == 20) {
+    } else if (--this.state.temperature >= 20) {
       this.setState({ water: Math.round(this.state.water * 100) / 100 - 0.02 })
     }
 
-    console.log(this.state.water);
+    console.log(this.state.temperature);
   }
 
   render() {
