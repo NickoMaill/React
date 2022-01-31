@@ -16,7 +16,7 @@ class App extends React.Component {
       checkMail: null,
       checkPass: null,
       formHide: "d-block",
-      submitted: "d-none"
+      submitted: "d-none",
 
     };
 
@@ -25,38 +25,38 @@ class App extends React.Component {
 
   };
 
+
   onMailChange(e) {
     this.setState({ inputMail: e.target.value })
-    // console.log("mail", this.state.inputMail);
 
     let mail = this.state.inputMail;
-    // const mailFormat = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
+    const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$')
 
-    // if (e.match(mailFormat)) {
-    //   this.setState({checkMail: "is-valid"})
+    if (validEmail.test(mail)) {
+      this.setState({ checkMail: "is-valid" })
+      return true
 
-    // } 
-    // console.log(mail.length);
-    
-    if (mail.length < 12) {
-      this.setState({checkMail: "is-invalid"})
+    }
+
+    if (!validEmail.test(mail)) {
+      this.setState({ checkMail: "is-invalid" })
     }
   };
 
   onPassChange(e) {
+
     this.setState({ inputPass: e.target.value })
-    console.log("pass", this.state.inputPass);
 
     let password = this.state.inputPass
+    const validPassword = new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$');
 
-    if (password.length >= 12) {
-      this.setState({checkPass: "is-valid"})
+    if (validPassword.test(password)) {
+      this.setState({ checkPass: "is-valid" })
 
-    } 
-    console.log(password.length);
-    
-    if (password.length < 12) {
-      this.setState({checkPass: "is-invalid"})
+    }
+
+    if (!validPassword.test(password)) {
+      this.setState({ checkPass: "is-invalid" })
     }
   };
 
@@ -66,15 +66,16 @@ class App extends React.Component {
     let checkMail = this.state.checkMail
 
     if (checkMail === "is-valid" && checkPass === "is-valid") {
-      this.setState({submitted: "d-flex"})
-      this.setState({formHide: "d-none"})
-      
+      this.setState({ submitted: "d-flex" })
+      this.setState({ formHide: "d-none" })
+      this.setState({ disabled: false })
+
     } else if (checkMail !== "is-valid" || checkPass !== "is-valid") {
-      this.setState({checkPass: "is-invalid"})
-      this.setState({checkMail: "is-invalid"})
+      this.setState({ checkPass: "is-invalid" })
+      this.setState({ checkMail: "is-invalid" })
 
     }
-  } 
+  }
 
   render() {
 
@@ -83,11 +84,11 @@ class App extends React.Component {
       <Form
         onInputMail={this.onMailChange}
         onInputPass={this.onPassChange}
-        mailValid = {this.state.checkMail}
-        passValid = {this.state.checkPass}
-        display = {this.state.submitted}
-        display2 = {this.state.formHide}
-        button = {() => this.onDisplayChange()}
+        mailValid={this.state.checkMail}
+        passValid={this.state.checkPass}
+        button={() => this.onDisplayChange()}
+        display={this.state.submitted}
+        display2={this.state.formHide}
       />
 
     )
