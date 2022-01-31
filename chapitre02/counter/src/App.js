@@ -28,10 +28,7 @@ class App extends React.Component {
     let add2 = this.state.countSlave;
     let add = this.state.count;
     this.setState({countSlave: add2 + 1})
-  } if (add2 === ) {
-    
   }
-
   substract2 = () => {
     let sub2 = this.state.countSlave;
     this.setState({ countSlave: sub2 - 1 })

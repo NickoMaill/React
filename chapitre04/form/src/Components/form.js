@@ -23,7 +23,7 @@ class Form extends React.Component {
                         <div className="mb-3">
 
                             <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                            <input type="email" className={`form-control ${this.props.mailValid}`} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email..." onInput={this.props.onInputMail}/>
+                            <input type="email" className={`form-control ${this.props.mailValid}`} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email..." onChange={this.props.onInputMail}/>
                             <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
 
                         </div>
@@ -31,7 +31,7 @@ class Form extends React.Component {
                         <div className="mb-3">
 
                             <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                            <input type="password" className={`form-control ${this.props.passValid}`} id="exampleInputPassword1" placeholder="Enter password..." onInput={this.props.onInputPass}/>
+                            <input type="password" className={`form-control ${this.props.passValid}`} id="exampleInputPassword1" placeholder="Enter password..." onChange={this.props.onInputPass}/>
 
                         </div>
 
@@ -42,7 +42,7 @@ class Form extends React.Component {
 
                         </div>
 
-                        <button type="submit" className="btn btn-primary" onChange={this.props.input}>Submit</button>
+                        <button type="button" className="btn btn-primary" onClick={this.props.button}>Submit</button>
 
                     </form>
 
