@@ -15,21 +15,66 @@ class App extends React.Component {
 
       activeTab: "Add",
       items: [],
-      productName: "",
-      price: 1
+      total: 0
 
     }
 
     this.selectTab = this.selectTab.bind(this);
+    this.add = this.add.bind(this)
+    this.totalCalc = this.totalCalc.bind(this)
+
+  }
+
+  add(name, price) {
+    const obj = {
+      name: name,
+      price: price,
+
+    }
+
+    const newList = this.state.items
+    newList.push(obj)
+
+    newList.sort(function (a, b) {
+
+      return a.price - b.price
+    }).reverse()
+
+    this.setState({ items: newList })
+
+    // this.setState({total: obj.price++})
 
   }
 
   selectTab(e) {
+
     this.setState({ activeTab: e.target.value })
     console.log(this.state.activeTab);
+
+  }
+
+  renderContent = () => {
+
+    switch (this.state.activeTab) {
+
+      case "Add":
+        return <Add addItem={this.add}></Add>
+
+      case "List":
+        return <List listItems={this.state.items}></List>
+
+      case "Pay":
+        return <Pay total={this.totalCalc} ></Pay>
+
+      default:
+        console.log("oups...");
+
+    }
   }
 
   render() {
+
+    console.log(this.state.items);
 
     return (
 
@@ -45,13 +90,13 @@ class App extends React.Component {
 
           <Button
             children="List"
-            isSelected={this.state.activeTab === 'List' ? true : false}
+            isSelected={this.state.activeTab === "List" ? true : false}
             click={this.selectTab}
           />
 
           <Button
             children="Pay"
-            isSelected={this.state.activeTab === 'Pay' ? true : false}
+            isSelected={this.state.activeTab === "Pay" ? true : false}
             click={this.selectTab}
           />
 
@@ -59,17 +104,7 @@ class App extends React.Component {
 
         <div>
 
-          <Add
-            isSelected={this.state.activeTab === "Add" ? true : false}
-            
-          />
-
-          <List
-            isSelected={this.state.activeTab === 'List' ? true : false} />
-
-          <Pay
-            isSelected={this.state.activeTab === 'Pay' ? true : false}
-          />
+          {this.renderContent()}
 
         </div>
 

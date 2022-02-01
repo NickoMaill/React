@@ -1,10 +1,32 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css"
 
-class List extends React.Component{
+class List extends React.Component {
+
+    
+
     render() {
+
         return (
-            <div className={this.props.isSelected? "d-flex" : "d-none"}>List</div>
+
+            <div>
+
+                <ul>
+
+                    {this.props.listItems.map((curr, index) => {
+
+                        return (
+
+                            <li key={index}>{curr.name} - {curr.price} </li>
+
+                        )
+
+                    })}
+
+                </ul>
+
+            </div>
+
         )
     }
 }
