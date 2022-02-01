@@ -46,7 +46,7 @@ class Add extends React.Component {
                     </div>
 
                     <div className="row">
-                        <input type="range" value={this.state.price} onChange={this.updatePrice} min="1" max="40"></input>
+                        <input type="range" value={this.state.price} onChange={this.updatePrice} min={1} max={40} step={1}></input>
                         <span>{this.state.price}</span>
                     </div>
 

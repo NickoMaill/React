@@ -8,13 +8,13 @@ class Pay extends React.Component{
         return (
 
             <div>
-                <p>{`${this.props.total}`} €</p>
+                <p>Total : {`${this.props.total}`} €</p>
             </div>
 
         )
 
     }
-    
+
 }
 
 export default Pay;

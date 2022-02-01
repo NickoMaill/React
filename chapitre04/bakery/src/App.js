@@ -21,12 +21,12 @@ class App extends React.Component {
 
     this.selectTab = this.selectTab.bind(this);
     this.add = this.add.bind(this)
-    this.totalCalc = this.totalCalc.bind(this)
-
   }
 
   add(name, price) {
+
     const obj = {
+
       name: name,
       price: price,
 
@@ -40,9 +40,13 @@ class App extends React.Component {
       return a.price - b.price
     }).reverse()
 
-    this.setState({ items: newList })
+    let currentPrice = obj.price;
+    currentPrice = parseInt(currentPrice)
 
-    // this.setState({total: obj.price++})
+    // console.log(currentPrice);
+    
+    this.setState({ items: newList })
+    this.setState({ total: this.state.total + currentPrice })
 
   }
 
@@ -64,7 +68,7 @@ class App extends React.Component {
         return <List listItems={this.state.items}></List>
 
       case "Pay":
-        return <Pay total={this.totalCalc} ></Pay>
+        return <Pay total={this.state.total} ></Pay>
 
       default:
         console.log("oups...");
