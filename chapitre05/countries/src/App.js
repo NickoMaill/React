@@ -52,7 +52,7 @@ class App extends React.Component {
   //   this.getCountry();
   // }
   
-  async getCountry(country) {
+  getCountry(country) {
     
     fetch(`https://restcountries.com/v3.1/name/${country}`)
     .then(res => res.json())
@@ -70,10 +70,11 @@ class App extends React.Component {
         });
         
       });
+
     })
+
   }
   
-
   render() {
 
     return (
@@ -83,19 +84,18 @@ class App extends React.Component {
         <div>
 
           <Button
-            children="France"
-            // onClick={this.getCountry("france")}
-          />
+            onClick={() => {this.getCountry("france")}}
+          >
+            France
+          </Button>
 
           <Button
-            children="Brazil"
-            // onClick={this.getCountry("brazil")}
-          />
+            onClick={() => {this.getCountry("brazil")}}
+          >Brazil</Button>
 
           <Button
-            children="Croatia"
-            // onClick={this.getCountry("croatia")}
-          />
+            onClick={() => {this.getCountry("croatia")}}
+          >Croati</Button>
 
         </div>
 
