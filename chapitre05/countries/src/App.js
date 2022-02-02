@@ -20,27 +20,43 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-		// Tout code asynchrone vient dans le componentDidMount
 		fetch("https://restcountries.com/v3.1/name/france")
-			.then((res) => res.json())
-			.then((data) => {
-				console.log("data", data);
-				this.setState({ name: data.name.common });
+			.then(res => res.json())
+			.then(data => {
+
+        data.map((country) =>{
+
+          console.log("data", country);
+          this.setState({ 
+            name: country.name.common, 
+            capital: country.capital,
+            flag: country.flags.png,
+            population: country.population,
+            region: country.region
+
+          });
+        })
+
 			});
 	}
 
   render() {
 
     return (
+
       <div>
+
         <ul>
-          <li>{this.state.name}</li>
-          <li>{this.state.capital}</li>
-          <li>{this.state.flag}</li>
-          <li>{this.state.population}</li>
-          <li>{this.state.region}</li>
+
+          <li><img src={`${this.state.flag}`}/></li>
+          <li>Name : {this.state.name}</li>
+          <li>Capital : {this.state.capital}</li>
+          <li>Population : {this.state.population}</li>
+          <li>Region : {this.state.region}</li>
         </ul>
+
       </div>
+
     )
 
   }
