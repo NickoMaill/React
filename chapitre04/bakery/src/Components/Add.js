@@ -17,6 +17,7 @@ class Add extends React.Component {
         this.setState({
             productName: e.target.value
         })
+        // console.log(this.state.productName);
     }
 
     updatePrice(e) {
