@@ -1,6 +1,7 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css"
 import Button from './Components/Button';
+import Card from './Components/Card';
 
 
 class App extends React.Component {
@@ -51,71 +52,76 @@ class App extends React.Component {
   // componentDidUpdate(){
   //   this.getCountry();
   // }
-  
-  getCountry(country) {
-    
-    fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then(res => res.json())
-    .then(data => {
-      
-      data.map((countrySearch) => {
-        
-        this.setState({
-          name: countrySearch.name.common,
-          capital: countrySearch.capital,
-          flag: countrySearch.flags.png,
-          population: countrySearch.population,
-          region: countrySearch.region
-          
-        });
-        
-      });
 
-    })
+  getCountry(country) {
+
+    fetch(`https://restcountries.com/v3.1/name/${country}`)
+      .then(res => res.json())
+      .then(data => {
+
+        data.map((countrySearch) => {
+
+          this.setState({
+            name: countrySearch.name.common,
+            capital: countrySearch.capital,
+            flag: countrySearch.flags.png,
+            population: countrySearch.population,
+            region: countrySearch.region
+
+          });
+
+        });
+
+      })
 
   }
-  
+
   render() {
 
     return (
 
-      <div>
+      <div className='d-flex justify-content-center m-3'>
 
-        <div>
+        <div className='w-25 d-flex flex-column align-items-center'>
 
-          <Button
-            onClick={() => {this.getCountry("france")}}
-          >
-            France
-          </Button>
+          <div className='d-flex justify-content-evenly'>
 
-          <Button
-            onClick={() => {this.getCountry("brazil")}}
-          >Brazil</Button>
+            <Button
+              onClick={() => { this.getCountry("france") }}
+            >
+              France
+            </Button>
 
-          <Button
-            onClick={() => {this.getCountry("croatia")}}
-          >Croati</Button>
+            <Button
+              onClick={() => { this.getCountry("brazil") }}
+            >
+              Brazil
+            </Button>
+
+            <Button
+              onClick={() => { this.getCountry("croatia") }}
+            >
+              Croatia
+            </Button>
+
+          </div>
+
+          <div className=' border border-2 rounded'>
+
+            <Card
+              name={this.state.name}
+              capital={this.state.capital}
+              flag={this.state.flag}
+              population={this.state.population}
+              region={this.state.region} />
+
+          </div>
+
 
         </div>
-
-        <div>
-
-          <img src={`${this.state.flag}`} />
-
-          <ul>
-
-            <li>Name : {this.state.name}</li>
-            <li>Capital : {this.state.capital}</li>
-            <li>Population : {this.state.population}</li>
-            <li>Region : {this.state.region}</li>
-
-          </ul>
-
-        </div>
-
 
       </div>
+
 
     )
 

@@ -12,7 +12,7 @@ class Button extends React.Component {
 
             <div>
 
-                <button onClick={this.props.onClick}>{this.props.children}</button>
+                <button className='btn btn-primary m-4' onClick={this.props.onClick}>{this.props.children}</button>
 
             </div>
 
