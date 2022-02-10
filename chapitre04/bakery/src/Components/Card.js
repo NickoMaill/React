@@ -8,21 +8,21 @@ class Card extends React.Component {
         super()
 
         this.state = {
-            image: "../../public/item.png"
+            image: "/images/item.png"
 
         };
 
     }
 
-    // componentDidMount() {
-    //     fetch(`https://raw.githubusercontent.com/konexio/digitous-assest/main/bakery/${this.props.productName}.png`)
-    //         .then((res) => res.blob())
-    //         .then((imgURL) => {
-    //             const pathReturn = URL.createObjectURL(imgURL)
-    //             this.setState({ image: pathReturn });
-    //         });
+    componentDidMount() {
+        fetch(`https://raw.githubusercontent.com/konexio/digitous-assest/main/bakery/${this.props.productName}.png`)
+            .then((res) => res.blob())
+            .then((imgURL) => {
+                const pathReturn = URL.createObjectURL(imgURL)
+                this.setState({ image: pathReturn });
+            });
 
-    // };
+    };
 
     render() {
         console.log(this.state.image);
@@ -33,12 +33,12 @@ class Card extends React.Component {
                     this.props.onClick(this.props.productName, this.props.price)}
                 >
 
-
-                </button>
                 <img
-                    src="./item.png"
-                    // alt={this.state.productName}
+                    src={this.state.image}
+                    alt={this.state.productName}
                 />
+                </button>
+                
             </div>
         );
     }
