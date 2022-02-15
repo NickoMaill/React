@@ -10,9 +10,11 @@ class HomePage extends React.Component {
 
         return (
             <div>
+
                 <h1>Nutflex</h1>
 
                 <div>
+
                     <h2>Notre Super catalogue de Film</h2>
 
                     <ul>
@@ -24,9 +26,13 @@ class HomePage extends React.Component {
                             }
                         })}
                     </ul>
+
                 </div>
+
             </div>
-        )
+
+        );
+
     }
 
 }

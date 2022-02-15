@@ -6,10 +6,10 @@ import HomePage from './Views/HomePage';
 
 class App extends React.Component {
 
-
-  
   render() {
+    
     return (
+
       <BrowserRouter>
 
         <Switch>
@@ -18,8 +18,11 @@ class App extends React.Component {
         </Switch>
 
       </BrowserRouter>
+
     );
+
   }
+  
 }
 
 export default App;
