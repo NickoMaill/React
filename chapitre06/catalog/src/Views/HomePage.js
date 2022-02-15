@@ -7,6 +7,7 @@ import data from "../Data/films.json"
 class HomePage extends React.Component {
     
     render() {
+        console.log(data);
 
         return (
             <div>
@@ -20,6 +21,7 @@ class HomePage extends React.Component {
                     <ul>
                         {data.map((film, i) => {
                             if (i === 0 || i < data.length) {
+                                console.log();
                                 return (
                                     <li key={i}><Link to={`/filmInfo/${i}`}>{film.title}</Link></li>
                                 )
