@@ -10,7 +10,7 @@ class HomePage extends React.Component {
         super()
 
 
-        console.log("data", data.length);
+        console.log("data", data);
         // this.getTitle = this.getTitle.bind(this)
     }
 
