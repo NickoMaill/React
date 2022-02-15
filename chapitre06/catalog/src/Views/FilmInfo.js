@@ -6,11 +6,11 @@ class FilmInfo extends Component {
     render() {
         return (
             <div>
-                <img src={data[this.props.match.params.id - 1].image}/>
-                <p>{data[this.props.match.params.id - 1].title}</p>
-                <p>{data[this.props.match.params.id - 1].director}</p>
-                <p>{data[this.props.match.params.id - 1].stars}</p>
-                <p>{data[this.props.match.params.id - 1].description}</p>
+                <img src={data[this.props.match.params.id].image}/>
+                <p>{data[this.props.match.params.id].title}</p>
+                <p>{data[this.props.match.params.id].director}</p>
+                <p>{data[this.props.match.params.id].stars}</p>
+                <p>{data[this.props.match.params.id].description}</p>
             </div>
         );
     }
