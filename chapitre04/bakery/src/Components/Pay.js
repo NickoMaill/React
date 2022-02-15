@@ -31,12 +31,12 @@ class Pay extends React.Component {
 
             <div>
 
-                <p>{this.state.basket}</p>
+                {/* <p>{this.state.basket}</p>
                 <p>{this.state.total} €</p>
                 <p>{this.state.totalTVA} €</p>
                 <p>{this.state.totalEcoTax} €</p>
-                <p>{this.state.totalTTC} €</p>
-                {/* <p>Total : {`${this.props.total}`} €</p> */}
+                <p>{this.state.totalTTC} €</p> */}
+                <p>Total : {`${this.props.total}`} €</p>
                 {this.props.items.map(item => {
                     <Card
                     productName={item.name}
