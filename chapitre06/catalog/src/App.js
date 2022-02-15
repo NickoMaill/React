@@ -1,13 +1,26 @@
 import React from 'react';
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom"
+import FilmInfo from './Views/FilmInfo';
+import HomePage from './Views/HomePage';
 
-class App extends Component {
+
+class App extends React.Component {
+
+
+  
   render() {
     return (
-      <div>
-        
-      </div>
+      <BrowserRouter>
+
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/film/:id" component={FilmInfo}/>
+        </Switch>
+
+      </BrowserRouter>
     );
   }
 }
 
 export default App;
+
