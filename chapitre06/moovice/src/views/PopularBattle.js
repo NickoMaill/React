@@ -53,9 +53,9 @@ class PopularBattle extends React.Component {
         const movies = this.state.movies;
         const currentBattle = this.state.currentBattle;
         // console.log("movieState",movies[1]);
-        if (this.state.isLoaded === true && currentBattle <= movies.length) {
-            // console.log("movieState", movies[currentBattle].title)
-            // console.log(movies.length);
+        if (this.state.isLoaded === true && currentBattle <= movies.length - 2) {
+            console.log("movieState", movies[currentBattle].title)
+            console.log(movies.length);
             return (
                 <div>
                     <h1>Popular Battle</h1>
@@ -84,18 +84,17 @@ class PopularBattle extends React.Component {
                 </div>
 
             )
-        } if (currentBattle === movies.length) {
+        } else {
             return (
                 <div>
                     <h1>Popular Battle</h1>
+                    <h2>Thanks for votes</h2>
+
                 </div>
+
 
             );
 
-        } else {
-            return (
-                <h1>oups</h1>
-            )
         }
     }
 }
