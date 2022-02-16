@@ -2,6 +2,7 @@ import React from 'react';
 import Card from '../Components/Card'
 import { Link } from 'react-router-dom'
 import "../styles/PopularBattle.css"
+import Favorites from './Favorites';
 
 class PopularBattle extends React.Component {
     constructor() {
@@ -10,7 +11,8 @@ class PopularBattle extends React.Component {
             movies: [],
             currentBattle: 0,
             value: null,
-            isLoaded: false
+            isLoaded: false,
+            favorites: localStorage.getItem
 
 
         }
@@ -40,9 +42,9 @@ class PopularBattle extends React.Component {
     }
 
     incrementBattle() {
-        this.setState(() => {
+        this.setState((prevState) => {
             return {
-                currentBattle: this.state.currentBattle + 2,
+                currentBattle: prevState.currentBattle + 2,
             };
         });
     }
@@ -53,12 +55,15 @@ class PopularBattle extends React.Component {
         const movies = this.state.movies;
         const currentBattle = this.state.currentBattle;
         // console.log("movieState",movies[1]);
-        if (this.state.isLoaded === true && currentBattle <= movies.length - 2) {
+        if (this.state.isLoaded === true && currentBattle < movies.length) {
             console.log("movieState", movies[currentBattle].title)
             console.log(movies.length);
+            console.log(currentBattle);
             return (
                 <div>
                     <h1>Popular Battle</h1>
+
+                    <p>click on films for votes</p>
 
                     <Card
                         src={movies[currentBattle].poster_path}
