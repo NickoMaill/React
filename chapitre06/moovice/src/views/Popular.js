@@ -24,8 +24,8 @@ class Popular extends React.Component {
                 this.setState({
                     movies: data.results,
                 })
-                console.log("movies", this.state.movies);
-                console.log("movies2", this.state.movies.length);
+                // console.log("movies", this.state.movies);
+                // console.log("movies2", this.state.movies.length);
             })
 
     }
@@ -38,7 +38,7 @@ class Popular extends React.Component {
                     {this.state.movies.map((movie, i) => {
                         console.log("film", movie);
                         if (i === 0 || i <= this.state.movies.length) {
-                            console.log("i", i);
+                            // console.log("i", i);
                             return (
                                 <Card
                                     key={i}

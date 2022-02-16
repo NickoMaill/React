@@ -20,11 +20,11 @@ class HomePage extends React.Component {
                     <h2>Notre Super catalogue de bonjour</h2>
 
                     <ul>
-                        {data.map((film) => {
+                        {data.map((film, i) => {
                             
                                 console.log();
                                 return (
-                                    <li ><Link to={`/film-info/${film.id}`}>{film.title}</Link></li>
+                                    <li key={i} ><Link to={`/film-info/${film.id}`}>{film.title}</Link></li>
                                 )
                             
                         })}

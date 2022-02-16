@@ -22,7 +22,6 @@ class FilmInfo extends Component {
                 <p>{film.stars.join(", ")}</p>
                 <p>{film.description}</p>
             </div>
-
         );
 
     }
