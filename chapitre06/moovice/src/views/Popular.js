@@ -37,7 +37,7 @@ class Popular extends React.Component {
                 <div className='card-div'>
                     {this.state.movies.map((movie, i) => {
                         console.log("film", movie);
-                        if (i === 0 || i <= 20) {
+                        if (i === 0 || i <= this.state.movies.length) {
                             console.log("i", i);
                             return (
                                 <Card

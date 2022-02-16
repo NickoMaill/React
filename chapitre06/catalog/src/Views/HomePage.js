@@ -7,6 +7,7 @@ import data from "../Data/films.json"
 class HomePage extends React.Component {
     
     render() {
+
         console.log(data);
 
         return (
@@ -16,16 +17,16 @@ class HomePage extends React.Component {
 
                 <div>
 
-                    <h2>Notre Super catalogue de Film</h2>
+                    <h2>Notre Super catalogue de bonjour</h2>
 
                     <ul>
-                        {data.map((film, i) => {
-                            if (i === 0 || i < data.length) {
+                        {data.map((film) => {
+                            
                                 console.log();
                                 return (
-                                    <li key={i}><Link to={`/filmInfo/${i}`}>{film.title}</Link></li>
+                                    <li ><Link to={`/film-info/${film.id}`}>{film.title}</Link></li>
                                 )
-                            }
+                            
                         })}
                     </ul>
 
@@ -39,3 +40,4 @@ class HomePage extends React.Component {
 
 }
 export default HomePage;
+

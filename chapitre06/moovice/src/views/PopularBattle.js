@@ -33,9 +33,9 @@ class PopularBattle extends React.Component {
     }
 
 	handleChange() {
-		this.setState((prevState) => {
+		this.setState(() => {
 			return {
-				currentBattle: prevState.currentBattle + 1,
+				currentBattle: this.state.currentBattle + 1,
 			};
 		});
 	}
@@ -47,8 +47,8 @@ class PopularBattle extends React.Component {
                 <h1>Popular</h1>
                 <div className='card-div'>
                     {this.state.movies.map((movie, i) => {
-                        if (i === this.state.currentBattle || i <= this.state.currentBattle + 1) {
-                            console.log("i", movie);
+                        if (i === 0 || i <= 1) {
+                            console.log("i", i);
                             return (
 
                                     <Card
