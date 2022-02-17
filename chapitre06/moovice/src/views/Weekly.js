@@ -21,12 +21,10 @@ class Weekly extends React.Component {
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                // console.log("data", data);
+
                 this.setState({
                     movies: data.results,
                 })
-                // console.log("movies", this.state.movies);
-                // console.log("movies2", this.state.movies.length);
             })
 
 
@@ -41,7 +39,6 @@ class Weekly extends React.Component {
                     {this.state.movies.map((movie, i) => {
                         console.log("film", movie);
                         if (i === 0 || i <= this.state.movies.length) {
-                            // console.log("i", i);
                             return (
                                 <Card
                                     key={i}
