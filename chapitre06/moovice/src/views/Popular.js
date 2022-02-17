@@ -24,8 +24,7 @@ class Popular extends React.Component {
                 this.setState({
                     movies: data.results,
                 })
-                // console.log("movies", this.state.movies);
-                // console.log("movies2", this.state.movies.length);
+
             })
 
     }

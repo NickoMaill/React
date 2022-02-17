@@ -12,7 +12,7 @@ class PopularBattle extends React.Component {
             currentBattle: 0,
             value: null,
             isLoaded: false,
-            favorites: localStorage.getItem("favorites") || []
+            favorites: JSON.parse(localStorage.getItem("favorites")) || []
 
 
         }
@@ -45,7 +45,8 @@ class PopularBattle extends React.Component {
         },
 
         localStorage.setItem("favorites", JSON.stringify([...this.state.favorites, id])),
-        console.log("localeStorage", this.state.favorites),
+        // localStorage.clear(),
+        console.log("localeStorage", localStorage),
         
         );
 

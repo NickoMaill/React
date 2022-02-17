@@ -11,7 +11,7 @@ class WeeklyBattle extends React.Component {
             currentBattle: 0,
             value: null,
             isLoaded: false,
-            favorites: localStorage.getItem("favorites") || []
+            favorites: JSON.parse(localStorage.getItem("favorites")) || []
 
 
         }
@@ -45,17 +45,18 @@ class WeeklyBattle extends React.Component {
             favorites: [...this.state.favorites, id]
         },
 
-        localStorage.setItem("favorites", JSON.stringify([...this.state.favorites, id])),
-        console.log("localeStorage", this.state.favorites),
-        
+            localStorage.setItem("favorites", JSON.stringify([...this.state.favorites, id])),
+            // localStorage.clear(),
+            console.log("localeStorage", localStorage),
+
         );
 
 
 
         console.log("id", this.state.movies[this.state.currentBattle].id);
         // console.log("favorites", this.state.favorites);
-        
-        
+
+
     }
 
 
