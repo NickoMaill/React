@@ -11,14 +11,14 @@ class PopularBattle extends React.Component {
             movies: [],
             currentBattle: 0,
             value: null,
+            favorites: JSON.parse(localStorage.getItem("favorites")) || [],
             isLoaded: false,
-            favorites: localStorage.getItem("favorites", null)
 
 
         }
 
-        this.incrementBattle1 = this.incrementBattle1.bind(this);
-        this.incrementBattle2 = this.incrementBattle2.bind(this);
+        this.incrementBattle = this.incrementBattle1.bind(this);
+
 
     }
 
@@ -39,34 +39,20 @@ class PopularBattle extends React.Component {
 
     }
 
-    incrementBattle1() {
+    incrementBattle(id) {
 
         this.setState((prevState) => {
 
             return {
                 currentBattle: prevState.currentBattle + 2,
+                favorites: [...this.state.favorites, id],
             };
 
         });
 
-        localStorage.setItem("favorite", this.state.movies[this.state.currentBattle].id)
-        console.log("localStorage", localStorage);
+        localStorage.setItem("favoristes", JSON.stringify([...this.state.favorites, id]));
 
-
-    }
-
-    incrementBattle2() {
-
-        this.setState((prevState) => {
-
-            return {
-                currentBattle: prevState.currentBattle + 2,
-            };
-
-        });
-
-        localStorage.setItem("favorite", this.state.movies[this.state.currentBattle + 1].id)
-        console.log("localStorage2", localStorage);
+        console.log(this.state.favorites);
 
 
     }
@@ -96,7 +82,7 @@ class PopularBattle extends React.Component {
                             releaseYear={movies[currentBattle].release_date}
                             description={movies[currentBattle].overview}
                             popularity={Math.floor((movies[currentBattle].popularity / 10000) * 100)}
-                            onClick={this.incrementBattle1}
+                            onClick={() => this.incrementBattle(movies[currentBattle].id)}
                         />
 
                         <div>
@@ -110,7 +96,7 @@ class PopularBattle extends React.Component {
                             releaseYear={movies[currentBattle + 1].release_date}
                             description={movies[currentBattle + 1].overview}
                             popularity={Math.floor((movies[currentBattle + 1].popularity / 10000) * 100)}
-                            onClick={this.incrementBattle2}
+                            onClick={() => this.incrementBattle(movies[currentBattle + 1].id)}
                         />
 
                     </div>
