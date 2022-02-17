@@ -46,7 +46,6 @@ class PopularBattle extends React.Component {
 
         localStorage.setItem("favorites", JSON.stringify([...this.state.favorites, id])),
         console.log("localeStorage", this.state.favorites),
-        localStorage.removeItem('favorites')
         
         );
 
