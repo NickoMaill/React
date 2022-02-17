@@ -12,14 +12,12 @@ class PopularBattle extends React.Component {
             currentBattle: 0,
             value: null,
             isLoaded: false,
-            favorites: localStorage.getItem("favorites")
+            favorites: localStorage.getItem("favorites") || []
 
 
         }
 
         this.incrementBattle = this.incrementBattle.bind(this);
-
-
     }
 
     componentDidMount() {
@@ -44,16 +42,22 @@ class PopularBattle extends React.Component {
         this.setState({
             currentBattle: this.state.currentBattle + 2,
             favorites: [...this.state.favorites, id]
-        });
+        },
 
-        localStorage.setItem("favoristes", JSON.stringify([...this.state.favorites, id]));
+        localStorage.setItem("favorites", JSON.stringify([...this.state.favorites, id])),
+        console.log("localeStorage", this.state.favorites),
+        localStorage.removeItem('favorites')
+        
+        );
+
+
 
         console.log("id", this.state.movies[this.state.currentBattle].id);
-        console.log("favorites", this.state.favorites);
-        console.log("localeStorage",localStorage);
-
-
+        // console.log("favorites", this.state.favorites);
+        
+        
     }
+
 
     render() {
 
@@ -81,7 +85,7 @@ class PopularBattle extends React.Component {
                             description={movies[currentBattle].overview}
                             popularity={Math.floor((movies[currentBattle].popularity / 10000) * 100)}
                             onClick={() => this.incrementBattle(movies[currentBattle].id)}
-                            // onClick={this.incrementBattle}
+                        // onClick={this.incrementBattle}
                         />
 
                         <div>
@@ -96,7 +100,7 @@ class PopularBattle extends React.Component {
                             description={movies[currentBattle + 1].overview}
                             popularity={Math.floor((movies[currentBattle + 1].popularity / 10000) * 100)}
                             onClick={() => this.incrementBattle(movies[currentBattle + 1].id)}
-                            // onClick={this.incrementBattle}
+                        // onClick={this.incrementBattle}
                         />
 
                     </div>
