@@ -1,0 +1,43 @@
+@mixin margPad0 {
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    border: solid;
+    width: 17rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 2rem;
+    margin: 2rem;
+}
+
+ul {
+    @include margPad0();
+    list-style: none;
+}
+
+img {
+    width: 15rem;
+}
+
+h2 {
+    text-align: center;
+}
+
+.li-film-info {
+    @include margPad0();
+    padding-bottom: 1rem;
+    text-align: justify;
+}
+
+.close-cross-div {
+    display: flex;
+}
+
+.close-cross {
+    width: 2rem;
+    align-self: flex-end;
+}

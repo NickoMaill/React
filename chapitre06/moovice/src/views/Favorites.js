@@ -8,7 +8,8 @@ class Favorites extends React.Component {
         super()
         this.state = {
             movies: [],
-            favIDs: this.getStorage()
+            favIDs: this.getStorage(),
+            isLoaded: false,
 
         }
 
@@ -16,7 +17,7 @@ class Favorites extends React.Component {
         this.getMovie = this.getMovie.bind(this);
         this.deleteMovie = this.deleteMovie.bind(this);
 
-        console.log("moviesState", this.state.movies);
+        // console.log("moviesState", this.state.movies);
         console.log("favIDs", this.state.favIDs);
     }
 
@@ -31,17 +32,22 @@ class Favorites extends React.Component {
             .then(res => res.json())
             .then(data => {
                 this.state.movies.push(data)
-                console.log("data", data);
+                // console.log("data", data);
                 this.setState({
-                    movies: this.state.movies
+                    movies: this.state.movies,
+                    isLoaded: true
                 })
-                console.log("moviesState2", this.state.movies);
+                // console.log("moviesState2", this.state.movies);
+                console.log("film", this.state.movies[1].id);
 
             })
     }
 
     deleteMovie(id) {
-        localStorage.removeItem(id)
+        const favIdsIndex = this.state.favIDs.indexOf(id)
+        this.setState({
+            favIDs: this.state.favIDs.splice(favIdsIndex, 1)
+        })
     }
 
     componentDidMount() {
@@ -58,11 +64,11 @@ class Favorites extends React.Component {
                 <h1>Favorites</h1>
                 <div className="fav-div">
                     {this.state.movies.map((movie, i) => {
-                        console.log("film", movie);
                         if (i === 0 || i <= this.state.movies.length) {
+                            // console.log("idTest",this.state.movies[0].id);
                             return (
                                 <Card
-                                    onClickDelete={() => this.deleteMovies(movie[i].id)}
+                                    onClickDelete={() => this.deleteMovie(this.state.movies[0].id)}
                                     delete={require("../assets/images/crossClose.png")}
                                     key={i}
                                     src={movie.poster_path}
