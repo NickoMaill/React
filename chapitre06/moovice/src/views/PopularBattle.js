@@ -1,8 +1,6 @@
 import React from 'react';
 import Card from '../Components/Card'
-import { Link } from 'react-router-dom'
 import "../styles/PopularBattle.css"
-import Favorites from './Favorites';
 
 class PopularBattle extends React.Component {
 
@@ -14,12 +12,13 @@ class PopularBattle extends React.Component {
             currentBattle: 0,
             value: null,
             isLoaded: false,
-            favorites: localStorage.getItem
+            favorites: localStorage.getItem("favorites", null)
 
 
         }
-        
-        this.incrementBattle = this.incrementBattle.bind(this);
+
+        this.incrementBattle1 = this.incrementBattle1.bind(this);
+        this.incrementBattle2 = this.incrementBattle2.bind(this);
 
     }
 
@@ -37,9 +36,10 @@ class PopularBattle extends React.Component {
 
             })
 
+
     }
 
-    incrementBattle() {
+    incrementBattle1() {
 
         this.setState((prevState) => {
 
@@ -49,14 +49,36 @@ class PopularBattle extends React.Component {
 
         });
 
+        localStorage.setItem("favorite", this.state.movies[this.state.currentBattle].id)
+        console.log("localStorage", localStorage);
+
+
+    }
+
+    incrementBattle2() {
+
+        this.setState((prevState) => {
+
+            return {
+                currentBattle: prevState.currentBattle + 2,
+            };
+
+        });
+
+        localStorage.setItem("favorite", this.state.movies[this.state.currentBattle + 1].id)
+        console.log("localStorage2", localStorage);
+
+
     }
 
     render() {
 
         const movies = this.state.movies;
         const currentBattle = this.state.currentBattle;
+        console.log(movies);
 
         if (this.state.isLoaded === true && currentBattle < movies.length) {
+
 
             return (
 
@@ -66,25 +88,33 @@ class PopularBattle extends React.Component {
 
                     <p>click on films for votes</p>
 
-                    <Card
-                        src={movies[currentBattle].poster_path}
-                        titleFilm={movies[currentBattle].original_title}
-                        releaseYear={movies[currentBattle].release_date}
-                        description={movies[currentBattle].overview}
-                        popularity={Math.floor((movies[currentBattle].popularity / 10000) * 100)}
-                        onClick={this.incrementBattle}
-                    />
+                    <div className="vs-div">
 
-                    <h2>VS</h2>
+                        <Card
+                            src={movies[currentBattle].poster_path}
+                            titleFilm={movies[currentBattle].original_title}
+                            releaseYear={movies[currentBattle].release_date}
+                            description={movies[currentBattle].overview}
+                            popularity={Math.floor((movies[currentBattle].popularity / 10000) * 100)}
+                            onClick={this.incrementBattle1}
+                        />
 
-                    <Card
-                        src={movies[currentBattle + 1].poster_path}
-                        titleFilm={movies[currentBattle + 1].original_title}
-                        releaseYear={movies[currentBattle + 1].release_date}
-                        description={movies[currentBattle + 1].overview}
-                        popularity={Math.floor((movies[currentBattle + 1].popularity / 10000) * 100)}
-                        onClick={this.incrementBattle}
-                    />
+                        <div>
+                            <img src={require("../assets/images/latest.png")} alt="vs icon" />
+                        </div>
+
+
+                        <Card
+                            src={movies[currentBattle + 1].poster_path}
+                            titleFilm={movies[currentBattle + 1].original_title}
+                            releaseYear={movies[currentBattle + 1].release_date}
+                            description={movies[currentBattle + 1].overview}
+                            popularity={Math.floor((movies[currentBattle + 1].popularity / 10000) * 100)}
+                            onClick={this.incrementBattle2}
+                        />
+
+                    </div>
+
 
                 </div>
 
@@ -96,7 +126,7 @@ class PopularBattle extends React.Component {
 
                 <div>
                     <h1>Popular Battle</h1>
-                    <h2>Thanks for votes</h2>
+                    <h2>Vous avez parcouru tous les films !</h2>
 
                 </div>
 
