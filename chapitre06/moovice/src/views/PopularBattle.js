@@ -11,13 +11,13 @@ class PopularBattle extends React.Component {
             movies: [],
             currentBattle: 0,
             value: null,
-            favorites: JSON.parse(localStorage.getItem("favorites")) || [],
             isLoaded: false,
+            favorites: localStorage.getItem("favorites")
 
 
         }
 
-        this.incrementBattle = this.incrementBattle1.bind(this);
+        this.incrementBattle = this.incrementBattle.bind(this);
 
 
     }
@@ -41,18 +41,16 @@ class PopularBattle extends React.Component {
 
     incrementBattle(id) {
 
-        this.setState((prevState) => {
-
-            return {
-                currentBattle: prevState.currentBattle + 2,
-                favorites: [...this.state.favorites, id],
-            };
-
+        this.setState({
+            currentBattle: this.state.currentBattle + 2,
+            favorites: [...this.state.favorites, id]
         });
 
         localStorage.setItem("favoristes", JSON.stringify([...this.state.favorites, id]));
 
-        console.log(this.state.favorites);
+        console.log("id", this.state.movies[this.state.currentBattle].id);
+        console.log("favorites", this.state.favorites);
+        console.log("localeStorage",localStorage);
 
 
     }
@@ -83,6 +81,7 @@ class PopularBattle extends React.Component {
                             description={movies[currentBattle].overview}
                             popularity={Math.floor((movies[currentBattle].popularity / 10000) * 100)}
                             onClick={() => this.incrementBattle(movies[currentBattle].id)}
+                            // onClick={this.incrementBattle}
                         />
 
                         <div>
@@ -97,6 +96,7 @@ class PopularBattle extends React.Component {
                             description={movies[currentBattle + 1].overview}
                             popularity={Math.floor((movies[currentBattle + 1].popularity / 10000) * 100)}
                             onClick={() => this.incrementBattle(movies[currentBattle + 1].id)}
+                            // onClick={this.incrementBattle}
                         />
 
                     </div>
