@@ -5,6 +5,10 @@ class Card extends React.Component {
     render() {
         return (
             <div className='card' onClick={this.props.onClick}>
+                <div className="cross-close-div">
+                    <img src={this.props.delete} onClick={this.props.onClickDelete} className="close-cross" />
+
+                </div>
                 <img src={`https://image.tmdb.org/t/p/w300/${this.props.src}`} />
                 <h2>{this.props.titleFilm}</h2>
                 <ul>
