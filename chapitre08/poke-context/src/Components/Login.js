@@ -1,3 +1,4 @@
+import React from "react"
 import { useForm } from "react-hook-form";
 
 
@@ -8,7 +9,7 @@ export default function Login() {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => console.log("data", data);
 
     return (
         <div>
@@ -20,6 +21,7 @@ export default function Login() {
                 {errors.userName && <span>you must enter your username</span>}
                 <input {...register("password", { required: true }, {minLength: 6})}/>
                 {errors.password && <span>you must enter your password</span>}
+                <input type="submit"/>
 
             </form>
         </div>
