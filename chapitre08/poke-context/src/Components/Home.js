@@ -24,7 +24,7 @@ export default function Home() {
             <h3>Type : </h3>
             <ul>
                 {pokemon.types.map((types) => (
-                    <li> {types.type.name} </li>
+                    <p> {types.type.name} </p>
                 ))}
             </ul>
 
