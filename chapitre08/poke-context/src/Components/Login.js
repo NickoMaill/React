@@ -1,4 +1,3 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 
 
@@ -17,11 +16,11 @@ export default function Login() {
             <h1>LOGIN</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
 
-                <input {...register("userName", { required: true }, {maxLength: 15})}/>
+                <input {...register("userName", { required: true, maxLength: 15 })} />
                 {errors.userName && <span>you must enter your username</span>}
-                <input {...register("password", { required: true }, {minLength: 6})}/>
+                <input {...register("password", { required: true, minLength: 6 })} />
                 {errors.password && <span>you must enter your password</span>}
-                <input type="submit"/>
+                <input type="submit" />
 
             </form>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
 
@@ -19,7 +19,11 @@ export default function Home() {
             .then(res => {
                 setPokemon(res);
                 setIsLoaded(true);
-            });
+                console.log(res);
+            })
+            .catch((err) => {
+                console.error("Error while charging a Pokemon", err);
+            })
         // console.log(pokemon.types[0].slot);
     }, [id]);
 
