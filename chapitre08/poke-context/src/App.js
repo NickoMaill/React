@@ -9,22 +9,14 @@ function App() {
 
   const [isLogged, setIsLogged] = useState(false)
 
-  const setAuth = () => {
-    if (isLogged === true) {
-      console.log("already logged");
-    } else {
-      setIsLogged(true)
-    }
-  }
-
-  const value ={
+  const value = {
     isLogged: isLogged,
     setIsLogged: setIsLogged,
   }
 
   return (
     <UserContext.Provider value={value}>
-      
+
       <BrowserRouter>
 
         <nav>
