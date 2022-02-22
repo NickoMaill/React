@@ -1,3 +1,4 @@
+import UIfx from 'uifx'
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../App";
 
@@ -12,22 +13,27 @@ export default function Home() {
 
     const randomNumber = () => {
         setId(
-            Math.floor(Math.random() * 100) + 1
+            Math.floor(Math.random() * 721) + 1
         );
     };
 
     useEffect(() => {
+        fetch("https://pokeapi.co/api/v2/language/5/")
         fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
             .then(res => res.json())
             .then(res => {
                 setPokemon(res);
                 setIsLoaded(true);
-                // console.log(res);
+                console.log(res);
             })
             .catch((err) => {
                 console.error("Error while charging a Pokemon", err);
             })
     }, [id]);
+
+    const playCry = () => {
+
+    }
 
 
 
@@ -35,7 +41,7 @@ export default function Home() {
         return (
             <div>
                 <h1>HOME</h1>
-                <h4>please connect</h4>
+                <h4>please connect </h4>
 
             </div>
         );
@@ -57,18 +63,22 @@ export default function Home() {
                 <h1>HOME</h1>
                 <button onClick={randomNumber}>Random Pokemon</button>
                 <h4>Name : {pokemon.name}</h4>
+                <img
+                    src={pokemon.sprites.front_default}
+                    alt={`picture of ${pokemon.name}`}
+                    title={pokemon.name} />
                 <h4>Height : {pokemon.height}</h4>
                 <h4>Weight : {pokemon.weight}</h4>
                 <h3>Type : </h3>
                 <ul>
                     {pokemon.types.map((types, i) => (
-                        <p key={i}> {types.type.name} </p>
+                        <li><img src={require(`/src/assets/images/${types.type.name}.png`)} key={i} /></li>
                     ))}
                 </ul>
-                <img
-                    src={pokemon.sprites.front_default}
-                    alt={`picture of ${pokemon.name}`}
-                    title={pokemon.name} />
+                <figure>
+                    <audio controls src={require(`../assets/audio/${pokemon.id}.ogg`)}><code>audio</code></audio>
+
+                </figure>
 
             </div>
         );
