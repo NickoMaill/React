@@ -5,7 +5,7 @@ import Login from './Components/Login';
 
 export const UserContext = createContext(false);
 
-function App() {
+export default function App() {
 
   const [isLogged, setIsLogged] = useState(false)
 
@@ -35,5 +35,3 @@ function App() {
     </UserContext.Provider>
   );
 }
-
-export default App;
