@@ -21,6 +21,8 @@ export default function App() {
 
         <nav>
           <Link to="/">Home | </Link>
+          <Link to="/">Your team | </Link>
+          <Link to="/">Battle | </Link>
           <Link to="/login">Login | </Link>
         </nav>
 
