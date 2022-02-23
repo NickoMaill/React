@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom/cjs/react-router-dom.min";
 import { createContext, useState } from "react"
-import Home from './Components/Home';
-import Login from './Components/Login';
+import Home from './Views/Home';
+import Login from './Views/Login';
 
 export const UserContext = createContext(false);
 
