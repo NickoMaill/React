@@ -5,6 +5,7 @@ export const Context = createContext({
     isLogged: false,
     isLoaded:false,
     pokemon: {},
+    currentPokemon: {},
     weeklyPokemon:[],
     isPokeLoaded:false,
     isWeeklyLoaded:false,

@@ -7,6 +7,7 @@ import MineCard from "../Components/MinCard"
 import idFormat from "../Modules/IdFormat";
 import "../App.css"
 import "../Styles/Pokedex.css"
+import Card from "../Components/Card"
 
 export default function Pokedex() {
 
@@ -15,11 +16,58 @@ export default function Pokedex() {
     const [limitFetch, setLimitFetch] = useState(20)
     const [loadClass, setLoadClass] = useState("btn-load-next")
 
+
+
     const loadNextPokemon = () => {
         setLimitFetch(limitFetch + 20)
         setLoadClass("btn-load-next loading")
 
     }
+
+
+    const customStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+        },
+    };
+
+    Modal.setAppElement("#root");
+
+    let subtitle;
+    const [modalIsOpen, setIsOpen] = useState(false);
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        subtitle.style.color = '#f00';
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
+
+    const displayStats = (e) => {
+        fetch(`https://pokeapi.co/api/v2/pokemon/${e.target.value}`)
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                stateContext.setCurrentPokemon(res)
+                stateContext.setType(res.types[0].type.name)
+                console.log(res.types[0].type.name);
+                openModal()
+            })
+            .catch((err) => {
+                console.error("Error while charging a Pokemon", err);
+            })
+    }
+
 
     useEffect(() => {
         console.log(limitFetch);
@@ -67,6 +115,7 @@ export default function Pokedex() {
 
                     <div className="pokedex-wrapper">
 
+
                         {stateContext.pokemon.map((pokemon, i) => {
 
                             if (i === 0 || i <= stateContext.pokemon.length) {
@@ -76,10 +125,26 @@ export default function Pokedex() {
                                         key={i}
                                         keyId={i}
                                         id={idFormat(i + 1)}
+                                        onClick={displayStats}
                                     />
                                 )
                             }
                         })}
+
+                        <Modal
+                            isOpen={modalIsOpen}
+                            onAfterOpen={afterOpenModal}
+                            onRequestClose={closeModal}
+                            style={customStyles}
+                            contentLabel="Example Modal"
+                        >
+
+                            <Card
+
+                            />
+
+
+                        </Modal>
 
                     </div>
 

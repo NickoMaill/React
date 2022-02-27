@@ -1,33 +1,37 @@
+import { useContext } from "react";
+import { Context } from "../Context/NewsContext";
 import "../Styles/Card.css"
+import idFormat from "../Modules/IdFormat";
 
-export default function Card(props) {
+export default function Card() {
+    const stateContext = useContext(Context);
 
     return (
 
-        <div className={`poke-card-${props.className}`}>
+        <div className={`poke-card-${stateContext.type}`}>
 
             <div className="title-div">
 
-                <h2>{props.name}</h2>
-                <p>id n° {props.id}</p>
+                <h2>{stateContext.currentPokemon.name}</h2>
+                <p>id n° {idFormat(stateContext.currentPokemon.id)}</p>
                 <img
                     className="sprites"
-                    src={props.sprites}
-                    alt={`picture of ${props.alt}`}
-                    title={props.title} />
+                    src={require(`../assets/images/officialSprites/${idFormat(stateContext.currentPokemon.id)}.png`)}
+                    alt={`picture of ${stateContext.currentPokemon.name}`}
+                    title={stateContext.currentPokemon.name} />
 
             </div>
 
             <div>
 
-                <h4>Height : {props.height} m</h4>
+                <h4>Height : {stateContext.currentPokemon.height} m</h4>
 
-                <h4>Weight : {props.weight} Kg</h4>
+                <h4>Weight : {stateContext.currentPokemon.weight} Kg</h4>
                 <div>
 
                     <h4>Stats</h4>
                     <ul>
-                        {props.stats.map((stats, i) => (
+                        {stateContext.currentPokemon.stats.map((stats, i) => (
                             <li key={i}>{stats.stat.name} : {stats.base_stat}</li>
                         ))}
                     </ul>
@@ -37,15 +41,15 @@ export default function Card(props) {
                 <div>
                     <h4>Types</h4>
                     <ul className="type-ul">
-                        {props.types.map((types, i) => (
-                            <li><img className="types-img" src={require(`/src/assets/images/${types.type.name}.png`)} key={i} /></li>
+                        {stateContext.currentPokemon.types.map((types, i) => (
+                            <li><img className="types-img" src={require(`/src/assets/images/Types/${types.type.name}.png`)} key={i} /></li>
                         ))}
                     </ul>
                 </div>
 
 
                 <figure>
-                    <audio controls src={require(`../assets/audio/${props.idAudio}.ogg`)}><code>audio</code></audio>
+                    <audio controls src={require(`../assets/audio/${stateContext.currentPokemon.id}.ogg`)}><code>audio</code></audio>
 
                 </figure>
             </div>

@@ -23,6 +23,7 @@ export default function App() {
   const [isPokeLoaded, setIsPokeLoaded] = useState(false)
   const [type, setType] = useState("")
   const [id, setId] = useState(null)
+  const [currentPokemon, setCurrentPokemon] = useState({})
 
   const value = {
     isLogged: isLogged,
@@ -36,6 +37,9 @@ export default function App() {
 
     pokemon: pokemon,
     setPokemon: setPokemon,
+
+    currentPokemon: currentPokemon,
+    setCurrentPokemon: setCurrentPokemon,
 
     weeklyPokemon: weeklyPokemon,
     setWeeklyPokemon: setWeeklyPokemon,

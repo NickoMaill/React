@@ -12,6 +12,7 @@ var Context = (0, _react.createContext)({
   isLogged: false,
   isLoaded: false,
   pokemon: {},
+  currentPokemon: {},
   weeklyPokemon: [],
   isPokeLoaded: false,
   isWeeklyLoaded: false,
