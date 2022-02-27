@@ -16,7 +16,7 @@ export default function MineCard(props) {
             title={stateContext.pokemon[props.keyId].name} 
             />
             <span>id n° : {props.id}</span>
-            <button className="button"><a target="_blank" href={stateContext.pokemon[props.keyId].url}>Show Stats</a></button>
+            <button onClick={props.onClick} className="button"><a target="_blank" href={stateContext.pokemon[props.keyId].url}>Show Stats</a></button>
 
         </div>
     )

@@ -1,11 +1,12 @@
 import { useState, useContext, useEffect } from "react";
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 // import Card from "../Components/Card"
 import { Context } from "../Context/NewsContext";
 import MineCard from "../Components/MinCard"
 import idFormat from "../Modules/IdFormat";
 import "../App.css"
 import "../Styles/Pokedex.css"
-// import axios from "axios";
 
 export default function Pokedex() {
 
@@ -22,12 +23,16 @@ export default function Pokedex() {
 
     useEffect(() => {
         console.log(limitFetch);
+
         fetch(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=${limitFetch}`)
             .then(res => res.json())
             .then(res => {
                 console.log(res);
                 stateContext.setPokemon(res.results)
                 setLoadClass("btn-load-next")
+                stateContext.setIsLoaded(false)
+                stateContext.setIsPokeLoaded(true)
+                console.log(stateContext.isLoaded);
 
             })
             .catch((err) => {

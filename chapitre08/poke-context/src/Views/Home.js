@@ -1,11 +1,10 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { Context } from "../Context/NewsContext";
-import offlineApi from "../data/offlineApi.json";
 import NewsCard from "../Components/NewsCard";
 import IdFormat from "../Modules/IdFormat";
-import axios from 'axios'
+import RandomId from "../Modules/RandomId";
 import "../Styles/Home.css"
-// import"../App.css"
+import offlineApi from "../data/offlineApi.json"
 import MineCard from "../Components/MinCard";
 
 
@@ -13,31 +12,57 @@ import MineCard from "../Components/MinCard";
 export default function Home() {
 
     const stateContext = useContext(Context);
-    // useEffect(() => {
-    //     const newsUrl = {
-    //         method: 'GET',
-    //         url: 'https://video-game-news.p.rapidapi.com/pokemon',
-    //         headers: {
-    //             'x-rapidapi-host': 'video-game-news.p.rapidapi.com',
-    //             'x-rapidapi-key': 'f8e155da39mshb4bb9c73c1e3bd6p15dcb5jsn925cb7e1ab14'
-    //         }
-    //     };
 
-    //     axios.request(newsUrl)
-    //         .then(function (res) {
-    //             // console.log(res.data);
-    //             stateContext.setGameNews(res.data)
-    //         })
-    //         .then(function (res) {
-    //             stateContext.gameNews = res
-    //             setIsLoaded(true)
-    //             console.log(res);
-    //         })
-    //         .catch(function (err) {
-    //             console.error(err);
-    //         });
-    //     // console.log("game", gameNews)
-    // }, [])
+    useEffect(() => {
+        // const newsUrl = {
+        //     method: 'GET',
+        //     url: 'https://video-game-news.p.rapidapi.com/pokemon',
+        //     headers: {
+        //         'x-rapidapi-host': 'video-game-news.p.rapidapi.com',
+        //         'x-rapidapi-key': 'f8e155da39mshb4bb9c73c1e3bd6p15dcb5jsn925cb7e1ab14'
+        //     }
+        // };
+
+        // axios.request(newsUrl)
+        //     .then(function (res) {
+        //         // console.log(res.data);
+        //         stateContext.setGameNews(res.data)
+        //     })
+        //     .then(function (res) {
+        //         stateContext.gameNews = res
+        //         setIsLoaded(true)
+        //         console.log(res);
+        //     })
+        //     .catch(function (err) {
+        //         console.error(err);
+        //     });
+        // console.log("game", gameNews)
+
+        stateContext.setGameNews(offlineApi)
+
+        fetch("https://pokeapi.co/api/v2/pokemon?offset=0&limit=721")
+
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                stateContext.setPokemon(res.results);
+                stateContext.setIsLoaded(true)
+            })
+
+            .catch((err) => {
+                console.error("Error while charging a Pokemon", err);
+
+            })
+
+        function IdsWeek(i) {
+            const res = [RandomId(i), RandomId(i), RandomId(i)]
+            stateContext.setWeeklyPokemon(res)
+        }
+
+        IdsWeek(721)
+        IdsWeek(721)
+        IdsWeek(721)
+    }, [])
 
     if (stateContext.isLoaded !== true) {
 
@@ -99,18 +124,24 @@ export default function Home() {
 
                         <h2>Pokemon of the Weeks</h2>
 
-                        {stateContext.weeklyPokemon.map((week, i) => {
-                            if (i === 0 || i <= stateContext.weeklyPokemon.length) {
-                                console.log(i);
-                                return (
-                                    <MineCard
-                                        key={i}
-                                        keyId={stateContext.weeklyPokemon[i]}
-                                        id={IdFormat(stateContext.weeklyPokemon[i])} />
+                        <div className="weekly-pokemon">
 
-                                )
-                            }
-                        })}
+                            {stateContext.weeklyPokemon.map((week, i) => {
+                                if (i === 0 || i <= stateContext.weeklyPokemon.length) {
+                                    console.log(i);
+                                    console.log(stateContext.weeklyPokemon);
+                                    return (
+                                        <MineCard
+                                            key={i}
+                                            keyId={stateContext.weeklyPokemon[i]}
+                                            id={IdFormat(stateContext.weeklyPokemon[i])} />
+
+                                    )
+                                }
+                            })}
+                            
+                        </div>
+
 
                     </div>
 
