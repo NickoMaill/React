@@ -37,7 +37,7 @@
   background-color: #fff;
 }
 
-.button {
+.btn-load-next {
   display: inline-block;
   border: 0;
   outline: 0;
@@ -57,12 +57,12 @@
   transition: padding-right .3s ease-out;
 }
 
-.button.loading {
+.btn-load-next.loading {
   background-color: #CCC;
   padding-right: 40px;
 }
 
-.button.loading:after {
+.btn-load-next.loading:after {
   content: "";
   position: absolute;
   border-radius: 100%;

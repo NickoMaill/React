@@ -9,7 +9,12 @@ export default function MineCard(props) {
         <div className="min-card-div">
 
             <h3>{stateContext.pokemon[props.keyId].name}</h3>
-            <img src={require(`../assets/images/officialSprites/${props.id}.png`)} alt="" />
+            <img 
+            className="pokemon-sprite" 
+            src={require(`../assets/images/officialSprites/${props.id}.png`)} 
+            alt={stateContext.pokemon[props.keyId].name}
+            title={stateContext.pokemon[props.keyId].name} 
+            />
             <span>id n° : {props.id}</span>
             <button className="button"><a target="_blank" href={stateContext.pokemon[props.keyId].url}>Show Stats</a></button>
 

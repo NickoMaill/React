@@ -1,51 +1,22 @@
 import { useState, useContext, useEffect } from "react";
-import Card from "../Components/Card"
+// import Card from "../Components/Card"
 import { Context } from "../Context/NewsContext";
 import MineCard from "../Components/MinCard"
+import idFormat from "../Modules/IdFormat";
 import "../App.css"
 import "../Styles/Pokedex.css"
-import axios from "axios";
-// import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+// import axios from "axios";
 
 export default function Pokedex() {
 
     const stateContext = useContext(Context);
 
-    const [isLoaded, setIsLoaded] = useState(false)
-    // const [offsetFetch, setOffsetFetch] = useState(0)
     const [limitFetch, setLimitFetch] = useState(20)
-    const [loadClass, setLoadClass] = useState("button")
-
-    useEffect(() => {
-        fetch(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=${limitFetch}`)
-            .then(res => res.json())
-            .then(res => {
-                stateContext.setPokemon(res.results);
-                setIsLoaded(true);
-            })
-            .catch((err) => {
-                console.error("Error while charging a Pokemon", err);
-            })
-    }, []);
-
-    const idFormat = (i) => {
-        i += 1
-        i = i.toString()
-
-        if (i.length < 2) {
-            return "00" + i
-
-        } else if (i.length < 3 && i.length > 1) {
-            return "0" + i
-
-        } else {
-            return i
-        }
-    }
+    const [loadClass, setLoadClass] = useState("btn-load-next")
 
     const loadNextPokemon = () => {
         setLimitFetch(limitFetch + 20)
-        setLoadClass("button loading")
+        setLoadClass("btn-load-next loading")
 
     }
 
@@ -56,7 +27,7 @@ export default function Pokedex() {
             .then(res => {
                 console.log(res);
                 stateContext.setPokemon(res.results)
-                setLoadClass("button")
+                setLoadClass("btn-load-next")
 
             })
             .catch((err) => {
@@ -65,14 +36,14 @@ export default function Pokedex() {
     }, [limitFetch])
 
 
-    if (isLoaded !== true) {
+    if (stateContext.isPokeLoaded !== true) {
 
         return (
             <div>
                 <h1>Pokedex</h1>
                 <div className="load-div">
 
-                    <h3>We are chargin the pokeNews ...</h3>
+                    <h3>We are chargin the Pokedex ...</h3>
 
                     <div className="lds-facebook"><div></div><div></div><div></div></div>
 
@@ -99,7 +70,7 @@ export default function Pokedex() {
                                     <MineCard
                                         key={i}
                                         keyId={i}
-                                        id={idFormat(i)}
+                                        id={idFormat(i + 1)}
                                     />
                                 )
                             }
@@ -116,16 +87,3 @@ export default function Pokedex() {
     }
 }
 
-{/* <Card
-name={stateContext.pokemon.name}
-sprites={stateContext.pokemon.sprites.other['official-artwork'].front_default}
-alt={stateContext.pokemon.name}
-title={stateContext.pokemon.name}
-height={stateContext.pokemon.height / 10}
-weight={stateContext.pokemon.weight / 10}
-idAudio={stateContext.pokemon.id}
-types={stateContext.pokemon.types}
-stats={stateContext.pokemon.stats}
-id={stateContext.pokemon.id}
-className={stateContext.type}
-/>*/}
