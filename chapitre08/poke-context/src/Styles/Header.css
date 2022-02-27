@@ -1,0 +1,119 @@
+.nav-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #2C75B5;
+  padding: 1rem;
+}
+
+.logo {
+  width: 14rem;
+  height: 5rem;
+}
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 14rem;
+}
+
+.pokemon-logo {
+  width: 5rem;
+}
+
+.link-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: solid darkgray 2px;
+  background-color: #fff;
+  border-radius: 2rem;
+  text-decoration: none;
+  padding: 1.5rem;
+  margin-inline: 1rem;
+  width: 6rem;
+  -webkit-transition: 200ms;
+  transition: 200ms;
+}
+
+.link-div:hover {
+  background-color: #FDCC02;
+  border: solid #FDCC02 2px;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.link-div:active {
+  background-color: darkgray;
+  border: solid darkgray 2px;
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+.link-div p {
+  margin-bottom: 0;
+}
+
+i img {
+  width: 2rem;
+  margin-top: 0.6rem;
+}
+
+i .pokedex {
+  height: 33px;
+}
+
+i .pokeball {
+  height: 34px;
+  width: 34px;
+}
+
+i .card-icon {
+  height: 35px;
+}
+
+i .red-hat {
+  height: 35px;
+  width: 35px;
+}
+
+.link {
+  text-decoration: none;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: black;
+}
+
+.img-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+p {
+  line-height: normal;
+}
+/*# sourceMappingURL=Header.css.map */

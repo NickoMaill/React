@@ -6,6 +6,10 @@
     width: 20rem
 }
 
+.poke-card{
+    margin: 2rem
+}
+
 .poke-card-ground {
     @include typeTheme(rgb(183, 150, 60), rgba(183, 150, 60, 0.5));
 }
@@ -98,7 +102,7 @@
 }
 
 .sprites {
-    width: 8rem;
+    width: 10rem;
 }
 
 .types-img {
