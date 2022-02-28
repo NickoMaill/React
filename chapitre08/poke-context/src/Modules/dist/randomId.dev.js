@@ -5,9 +5,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = RandomId;
 
-function RandomId(max) {
-  for (var i = 0; i < 3; i++) {
+function RandomId(j, max) {
+  var arrayTemp = [];
+
+  for (var i = 0; i < j; i++) {
     var poke = Math.floor(Math.random() * max) + 1;
-    return poke;
+    arrayTemp.push(poke);
   }
+
+  console.log(arrayTemp);
+  return arrayTemp;
 }

@@ -1,12 +1,13 @@
-export default function RandomId(max) {
+export default function RandomId(j, max) {
+    
+    const arrayTemp = [];
+    for (let i = 0; i < j; i++) {
 
-    for (let i = 0; i < 3; i++) {
-
-
-        const poke = Math.floor(Math.random() * max) + 1
+        const poke = Math.floor(Math.random() * max) + 1;
+        arrayTemp.push(poke)
 
         
-        return poke
-
     }
+    console.log(arrayTemp);
+    return arrayTemp
 }

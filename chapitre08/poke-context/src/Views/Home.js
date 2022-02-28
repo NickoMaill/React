@@ -1,17 +1,20 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { Context } from "../Context/NewsContext";
 import NewsCard from "../Components/NewsCard";
 import IdFormat from "../Modules/IdFormat";
 import RandomId from "../Modules/RandomId";
+import useLocalStorage from "../Modules/useLocaleStorage";
 import "../Styles/Home.css"
 import offlineApi from "../data/offlineApi.json"
 import MineCard from "../Components/MinCard";
+import dayjs from "dayjs";
 
 
 
 export default function Home() {
 
     const stateContext = useContext(Context);
+    const [idStore, setIdStore] = useState(JSON.parse(localStorage.getItem("id")) || [])
 
     useEffect(() => {
         // const newsUrl = {
@@ -54,14 +57,24 @@ export default function Home() {
 
             })
 
-        function IdsWeek(i) {
-            const res = [RandomId(i), RandomId(i), RandomId(i)]
-            stateContext.setWeeklyPokemon(res)
+        function IdsWeek() {
+            const day = dayjs().format("dddd") 
+
+            if (day === "Monday") {
+                const res = RandomId(3, 721)
+                stateContext.setWeeklyPokemon(res)
+                // setIdStore(res)
+                localStorage.setItem('id', JSON.stringify(res))
+                console.log(localStorage.id);
+                console.log(day);
+                
+            } else {
+                return true
+            }
+
         }
 
-        IdsWeek(721)
-        IdsWeek(721)
-        IdsWeek(721)
+        IdsWeek()
     }, [])
 
     if (stateContext.isLoaded !== true) {
@@ -139,7 +152,7 @@ export default function Home() {
                                     )
                                 }
                             })}
-                            
+
                         </div>
 
 
