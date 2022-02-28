@@ -1,22 +1,41 @@
+//MODULE IMPORT
 import { useEffect, useContext, useState } from "react";
 import { Context } from "../Context/NewsContext";
+
+//COMPONENTS IMPORT
 import NewsCard from "../Components/NewsCard";
+import MineCard from "../Components/MinCard";
+
+//FUNCTION IMPORT
 import IdFormat from "../Modules/IdFormat";
 import RandomId from "../Modules/RandomId";
 import useLocalStorage from "../Modules/useLocaleStorage";
-import "../Styles/Home.css"
-import offlineApi from "../data/offlineApi.json"
-import MineCard from "../Components/MinCard";
+import FetchPokemon from "../Modules/FetchPokemon";
+
+//LIBRARY IMPORT
 import dayjs from "dayjs";
 
+//FILES IMPORT
+import offlineApi from "../data/offlineApi.json" //temporary, for save some requests, limited to 2500 per month.....(freeApi)
 
+//STYLE IMPORT
+import "../Styles/Home.css"
+
+//Main function home
 
 export default function Home() {
+
+    //Home State
 
     const stateContext = useContext(Context);
     const [idStore, setIdStore] = useState(JSON.parse(localStorage.getItem("id")) || [])
 
+    //On load Page
+
     useEffect(() => {
+
+        //  // fetch pokemon news
+
         // const newsUrl = {
         //     method: 'GET',
         //     url: 'https://video-game-news.p.rapidapi.com/pokemon',
@@ -41,7 +60,11 @@ export default function Home() {
         //     });
         // console.log("game", gameNews)
 
+        // replace fetch for save some requests
+
         stateContext.setGameNews(offlineApi)
+
+        //PokeApi request, loads 721 pokemon, there's more pokemon, but i have just only 721 cry sounds
 
         fetch("https://pokeapi.co/api/v2/pokemon?offset=0&limit=721")
 
@@ -57,25 +80,28 @@ export default function Home() {
 
             })
 
+            // function to determinate the pokemon o the week, functional only on monday
+
         function IdsWeek() {
             const day = dayjs().format("dddd") 
 
-            if (day === "Monday") {
+            if (day !== "Monday") {
                 const res = RandomId(3, 721)
                 stateContext.setWeeklyPokemon(res)
-                // setIdStore(res)
                 localStorage.setItem('id', JSON.stringify(res))
-                console.log(localStorage.id);
                 console.log(day);
                 
             } else {
-                return true
+                console.log(localStorage.id);
+                return stateContext.weeklyPokemon
             }
 
         }
 
         IdsWeek()
     }, [])
+
+    //Loading page
 
     if (stateContext.isLoaded !== true) {
 
@@ -104,6 +130,7 @@ export default function Home() {
 
     } else {
 
+        //Home Content
 
         return (
 

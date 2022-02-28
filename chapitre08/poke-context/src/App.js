@@ -1,7 +1,9 @@
+//MODULE IMPORT
 import { BrowserRouter, Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
 import { useState, createContext, useEffect } from "react"
 import { Context } from "../src/Context/NewsContext";
 
+//COMPONENTS IMPORT
 import Home from './Views/Home';
 import Login from './Views/Login';
 import Pokedex from "./Views/Pokedex";
@@ -10,9 +12,15 @@ import Battle from "./Views/Battle";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
+//Create context
+
 export const UserContext = createContext(false);
 
+//Main App function
+
 export default function App() {
+
+  //declare state
 
   const [isLogged, setIsLogged] = useState(false)
   const [gameNews, setGameNews] = useState([])
@@ -24,6 +32,8 @@ export default function App() {
   const [type, setType] = useState("")
   const [id, setId] = useState(null)
   const [currentPokemon, setCurrentPokemon] = useState({})
+
+  //setting value for context
 
   const value = {
     isLogged: isLogged,
@@ -56,6 +66,8 @@ export default function App() {
     isPokeLoaded: isPokeLoaded,
     setIsPokeLoaded: setIsPokeLoaded
   }
+
+  //App routing
 
   return (
 

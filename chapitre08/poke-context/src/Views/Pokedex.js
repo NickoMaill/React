@@ -1,30 +1,42 @@
+//MODULE IMPORT
 import { useState, useContext, useEffect } from "react";
-import ReactDOM from 'react-dom';
-import Modal from 'react-modal';
-// import Card from "../Components/Card"
 import { Context } from "../Context/NewsContext";
+
+//COMPONENTS IMPORT
 import MineCard from "../Components/MinCard"
-import idFormat from "../Modules/IdFormat";
-import "../App.css"
-import "../Styles/Pokedex.css"
 import Card from "../Components/Card"
 
+//FUNCTION IMPORT
+import idFormat from "../Modules/IdFormat";
+
+//LIBRARY IMPORT
+import Modal from 'react-modal';
+import ReactDOM from 'react-dom';
+
+//STYLE IMPORT
+import "../App.css"
+import "../Styles/Pokedex.css"
+
+// Main Function App
 export default function Pokedex() {
 
+    //Import Context
     const stateContext = useContext(Context);
 
+    // Create State
     const [limitFetch, setLimitFetch] = useState(20)
     const [loadClass, setLoadClass] = useState("btn-load-next")
+    const [modalIsOpen, setIsOpen] = useState(false);
 
 
-
+    // function for load more pokemon pokedex start at "limit=20"
     const loadNextPokemon = () => {
         setLimitFetch(limitFetch + 20)
         setLoadClass("btn-load-next loading")
 
     }
 
-
+    //Style for Modal-react
     const customStyles = {
         content: {
             top: '50%',
@@ -39,13 +51,11 @@ export default function Pokedex() {
     Modal.setAppElement("#root");
 
     let subtitle;
-    const [modalIsOpen, setIsOpen] = useState(false);
     function openModal() {
         setIsOpen(true);
     }
 
     function afterOpenModal() {
-        // references are now sync'd and can be accessed.
         subtitle.style.color = '#f00';
     }
 
