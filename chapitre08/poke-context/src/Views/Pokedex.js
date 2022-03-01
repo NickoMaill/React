@@ -7,7 +7,9 @@ import MineCard from "../Components/MinCard"
 import Card from "../Components/Card"
 
 //FUNCTION IMPORT
-import idFormat from "../Modules/IdFormat";
+import idFormat from "../Modules/idFormat";
+import fetchListPokemon from "../Modules/fetchListPokemon";
+import fetchStatsPokemon from "../Modules/fetchStatsPokemon";
 
 //LIBRARY IMPORT
 import Modal from 'react-modal';
@@ -55,22 +57,15 @@ export default function Pokedex() {
         setIsOpen(true);
     }
 
-    function afterOpenModal() {
-        subtitle.style.color = '#f00';
-    }
-
     function closeModal() {
         setIsOpen(false);
     }
 
     const displayStats = (e) => {
-        fetch(`https://pokeapi.co/api/v2/pokemon/${e.target.value}`)
-            .then(res => res.json())
+            fetchStatsPokemon(e)
             .then(res => {
-                console.log(res);
                 stateContext.setCurrentPokemon(res)
                 stateContext.setType(res.types[0].type.name)
-                console.log(res.types[0].type.name);
                 openModal()
             })
             .catch((err) => {
@@ -80,17 +75,13 @@ export default function Pokedex() {
 
 
     useEffect(() => {
-        console.log(limitFetch);
-
-        fetch(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=${limitFetch}`)
-            .then(res => res.json())
+        
+            fetchListPokemon(limitFetch)
             .then(res => {
-                console.log(res);
                 stateContext.setPokemon(res.results)
                 setLoadClass("btn-load-next")
                 stateContext.setIsLoaded(false)
                 stateContext.setIsPokeLoaded(true)
-                console.log(stateContext.isLoaded);
 
             })
             .catch((err) => {
@@ -108,7 +99,8 @@ export default function Pokedex() {
 
                     <h3>We are chargin the Pokedex ...</h3>
 
-                    <div className="lds-facebook"><div></div><div></div><div></div></div>
+                    {/* <div className="lds-facebook"><div></div><div></div><div></div></div> */}
+                    <img className="load" src={require("../assets/images/download.png")} alt="" />
 
                 </div>
             </div>
@@ -143,7 +135,6 @@ export default function Pokedex() {
 
                         <Modal
                             isOpen={modalIsOpen}
-                            onAfterOpen={afterOpenModal}
                             onRequestClose={closeModal}
                             style={customStyles}
                             contentLabel="Example Modal"

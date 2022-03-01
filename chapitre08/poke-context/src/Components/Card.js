@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Context } from "../Context/NewsContext";
 import "../Styles/Card.css"
-import idFormat from "../Modules/IdFormat";
+import idFormat from "../Modules/idFormat";
 
 export default function Card() {
     const stateContext = useContext(Context);
@@ -42,7 +42,7 @@ export default function Card() {
                     <h4>Types</h4>
                     <ul className="type-ul">
                         {stateContext.currentPokemon.types.map((types, i) => (
-                            <li><img className="types-img" src={require(`/src/assets/images/Types/${types.type.name}.png`)} key={i} /></li>
+                            <li key={i}><img className="types-img" src={require(`/src/assets/images/Types/${types.type.name}.png`)}/></li>
                         ))}
                     </ul>
                 </div>

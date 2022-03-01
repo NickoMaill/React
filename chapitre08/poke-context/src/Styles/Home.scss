@@ -1,13 +1,13 @@
-body{
+body {
     background-color: #ff5757;
 }
 
-.home-container{
+.home-container {
     display: flex;
     justify-content: center;
 }
 
-.home-content{
+.home-content {
     background-color: #fff;
     width: 85%;
     display: flex;
@@ -16,31 +16,52 @@ body{
     align-items: center;
 }
 
-.total-news-wrapper{
+.total-news-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     background-color: #fff;
 }
 
-.img-container{
+.img-container {
     display: flex;
     justify-content: center;
 }
 
-.header-img-div{
+.header-img-div {
     display: flex;
     align-items: center;
     background-color: #fff;
     width: 90%;
 }
 
-.header-img{
+.header-img {
     max-height: 350px;
     width: 100%;
     margin: 0 auto;
 }
 
-.weekly-pokemon{
+.weekly-pokemon {
     display: flex;
 }
+
+.load {
+    height: 10vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .load {
+        animation: load-spin infinite 1s linear;
+    }
+}
+
+@keyframes load-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  

@@ -72,4 +72,38 @@ body {
   display: -ms-flexbox;
   display: flex;
 }
+
+.load {
+  height: 10vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .load {
+    -webkit-animation: load-spin infinite 1s linear;
+            animation: load-spin infinite 1s linear;
+  }
+}
+
+@-webkit-keyframes load-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes load-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
 /*# sourceMappingURL=Home.css.map */

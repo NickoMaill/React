@@ -7,13 +7,15 @@ import NewsCard from "../Components/NewsCard";
 import MineCard from "../Components/MinCard";
 
 //FUNCTION IMPORT
-import IdFormat from "../Modules/IdFormat";
-import RandomId from "../Modules/RandomId";
+import idFormat from "../Modules/idFormat";
+import randomId from "../Modules/randomId";
 import useLocalStorage from "../Modules/useLocaleStorage";
-import FetchPokemon from "../Modules/FetchPokemon";
+import fetchListPokemon from "../Modules/fetchListPokemon";
+import fetchNews from "../Modules/fetchNews";
 
 //LIBRARY IMPORT
 import dayjs from "dayjs";
+import axios from "axios"
 
 //FILES IMPORT
 import offlineApi from "../data/offlineApi.json" //temporary, for save some requests, limited to 2500 per month.....(freeApi)
@@ -34,71 +36,40 @@ export default function Home() {
 
     useEffect(() => {
 
-        //  // fetch pokemon news
-
-        // const newsUrl = {
-        //     method: 'GET',
-        //     url: 'https://video-game-news.p.rapidapi.com/pokemon',
-        //     headers: {
-        //         'x-rapidapi-host': 'video-game-news.p.rapidapi.com',
-        //         'x-rapidapi-key': 'f8e155da39mshb4bb9c73c1e3bd6p15dcb5jsn925cb7e1ab14'
-        //     }
-        // };
-
-        // axios.request(newsUrl)
-        //     .then(function (res) {
-        //         // console.log(res.data);
-        //         stateContext.setGameNews(res.data)
-        //     })
-        //     .then(function (res) {
-        //         stateContext.gameNews = res
-        //         setIsLoaded(true)
-        //         console.log(res);
-        //     })
-        //     .catch(function (err) {
-        //         console.error(err);
-        //     });
-        // console.log("game", gameNews)
+        fetchNews().then(res => {
+            stateContext.setGameNews(res)
+        })
 
         // replace fetch for save some requests
 
-        stateContext.setGameNews(offlineApi)
-
         //PokeApi request, loads 721 pokemon, there's more pokemon, but i have just only 721 cry sounds
 
-        fetch("https://pokeapi.co/api/v2/pokemon?offset=0&limit=721")
+        fetchListPokemon(721).then(res => {
+            stateContext.setPokemon(res.results)
+            stateContext.setIsLoaded(true)
+            // console.log(stateContext.pokemon);
+        })
 
-            .then(res => res.json())
-            .then(res => {
-                console.log(res);
-                stateContext.setPokemon(res.results);
-                stateContext.setIsLoaded(true)
-            })
 
-            .catch((err) => {
-                console.error("Error while charging a Pokemon", err);
-
-            })
-
-            // function to determinate the pokemon o the week, functional only on monday
+        // function to determinate the pokemon o the week, functional only on monday
 
         function IdsWeek() {
-            const day = dayjs().format("dddd") 
+            const day = dayjs().format("dddd")
 
             if (day !== "Monday") {
-                const res = RandomId(3, 721)
+                const res = randomId(3, 721)
                 stateContext.setWeeklyPokemon(res)
                 localStorage.setItem('id', JSON.stringify(res))
                 console.log(day);
-                
+
             } else {
-                console.log(localStorage.id);
                 return stateContext.weeklyPokemon
             }
 
         }
 
         IdsWeek()
+        
     }, [])
 
     //Loading page
@@ -119,7 +90,8 @@ export default function Home() {
 
                     <div className="load-div">
 
-                        <div className="lds-facebook"><div></div><div></div><div></div></div>
+                        {/* <div className="lds-facebook"><div></div><div></div><div></div></div> */}
+                        <img className="load" src={require("../assets/images/download.png")} alt="" />
 
                     </div>
 
@@ -142,6 +114,7 @@ export default function Home() {
                     <div>
                         <h1>Welcome to te the new PokeBattle Universe</h1>
                     </div>
+
 
                     <div className="total-news-wrapper">
 
@@ -174,7 +147,7 @@ export default function Home() {
                                         <MineCard
                                             key={i}
                                             keyId={stateContext.weeklyPokemon[i]}
-                                            id={IdFormat(stateContext.weeklyPokemon[i])} />
+                                            id={idFormat(stateContext.weeklyPokemon[i])} />
 
                                     )
                                 }
