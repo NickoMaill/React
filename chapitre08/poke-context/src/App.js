@@ -1,6 +1,6 @@
 //MODULE IMPORT
 import { BrowserRouter, Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
-import { useState, createContext, useEffect } from "react";
+import { useState, createContext } from "react";
 import { Context } from "../src/Context/NewsContext";
 
 //COMPONENTS IMPORT
@@ -28,12 +28,8 @@ export default function App() {
   const [type, setType] = useState("");
   const [id, setId] = useState(null);
   const [locationArea, setArea] = useState([]);
-  const [weeklyPokemon, setWeeklyPokemon] = useState([]);
-  const [addToTeam, setAddToTeam] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [newsIsLoaded, setNewsIsLoaded] = useState(false);
-  const [isWeeklyLoaded, setIsWeeklyLoaded] = useState(false);
-  const [isPokeLoaded, setIsPokeLoaded] = useState(false);
+  const [weeklyPokemon, setWeeklyPokemon] = useState(JSON.parse(localStorage.getItem("weekPokemon")) || []);
+  const [team, setTeam] = useState(JSON.parse(localStorage.getItem("userTeam")) || []);
   const [currentPokemon, setCurrentPokemon] = useState({});
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -43,9 +39,6 @@ export default function App() {
   const value = {
     isLogged: isLogged,
     setIsLogged: setIsLogged,
-
-    isLoaded: isLoaded,
-    setIsLoaded: setIsLoaded,
 
     gameNews: gameNews,
     setGameNews: setGameNews,
@@ -62,23 +55,14 @@ export default function App() {
     weeklyPokemon: weeklyPokemon,
     setWeeklyPokemon: setWeeklyPokemon,
 
-    addToTeam: addToTeam,
-    setAddToTeam: setAddToTeam,
-
-    isWeeklyLoaded: isWeeklyLoaded,
-    setIsWeeklyLoaded: setIsWeeklyLoaded,
-
-    newsIsLoaded: newsIsLoaded,
-    setNewsIsLoaded: setNewsIsLoaded,
+    team: team,
+    setTeam: setTeam,
 
     type: type,
     setType: setType,
 
     id: id,
     setId: setId,
-
-    isPokeLoaded: isPokeLoaded,
-    setIsPokeLoaded: setIsPokeLoaded,
     
     modalIsOpen: modalIsOpen,
     setIsOpen: setIsOpen,

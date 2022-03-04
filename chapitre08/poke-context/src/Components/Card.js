@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Context } from "../Context/NewsContext";
-import idFormat from "../Modules/idFormat";
+import idFormat from "../Utils/idFormat";
 
 
 import "../Styles/Card.css"

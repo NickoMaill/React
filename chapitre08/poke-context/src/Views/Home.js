@@ -1,7 +1,7 @@
 //MODULE IMPORT
 import { useEffect, useContext, useState } from "react";
 import { Context } from "../Context/NewsContext";
-import { customStyles } from "../Modules/customStyles";
+import { customStyles } from "../Utils/customStyles";
 
 //COMPONENTS IMPORT
 import NewsCard from "../Components/NewsCard";
@@ -9,11 +9,11 @@ import MineCard from "../Components/MinCard";
 import Card from "../Components/Card";
 
 //FUNCTION IMPORT
-import idFormat from "../Modules/idFormat";
-import randomId from "../Modules/randomId";
-import fetchListPokemon from "../Modules/fetchListPokemon";
-import fetchStatsPokemon from "../Modules/fetchStatsPokemon";
-import fetchNews from "../Modules/fetchNews";
+import idFormat from "../Utils/idFormat";
+import randomId from "../Utils/randomId";
+import fetchListPokemon from "../Utils/fetchListPokemon";
+import fetchStatsPokemon from "../Utils/fetchStatsPokemon";
+import fetchNews from "../Utils/fetchNews";
 
 //LIBRARY IMPORT
 import dayjs from "dayjs";
@@ -52,7 +52,6 @@ export default function Home() {
 
                 fetchStatsPokemon(res.location_area_encounters)
                     .then(res => {
-                        console.log(res);
                         stateContext.setArea(res)
                     })
                     .catch((err) => {
@@ -86,22 +85,21 @@ export default function Home() {
         fetchListPokemon(721).then(res => {
             stateContext.setPokemon(res.results)
             setWeeklyLoaded(true)
-            // console.log(stateContext.pokemon);
         })
         .catch((err) => {
             console.error("Error while charging the PokeList", err);
         });
 
-        // function to determinate the pokemon o the week, functional only on monday
+        // function to determinate the pokemon of the week, functional only on monday
 
         function IdsWeek() {
             const day = dayjs().format("dddd")
 
-            if (day !== "Monday") {
+            if (day === "Monday" || stateContext.weeklyPokemon.length === 0) {
                 const res = randomId(3, 721)
                 stateContext.setWeeklyPokemon(res)
-                localStorage.setItem('id', JSON.stringify(res))
-                console.log(day);
+                localStorage.setItem('weekPokemon', JSON.stringify(res))
+                // console.log(stateContext.weeklyPokemon);
 
             } else {
                 return stateContext.weeklyPokemon
@@ -110,7 +108,6 @@ export default function Home() {
         };
 
         IdsWeek();
-        console.log("mount", stateContext.gameNews);
 
     }, []);
 
@@ -120,7 +117,7 @@ export default function Home() {
         <div className="home-container">
 
             <div className="home-content">
-
+                
                 <div>
                     <h1>Welcome to te the new PokeBattle Universe</h1>
                 </div>

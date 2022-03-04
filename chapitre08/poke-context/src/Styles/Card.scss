@@ -1,13 +1,12 @@
 @mixin typeTheme($color, $backColor) {
+    display: flex;
+    flex-direction: column;
     border: solid;
     border-width: 10px;
     border-color: $color;
     background-color: $backColor;
-    width: 50rem
-}
-
-.poke-card{
-    margin: 2rem
+    width: 40rem;
+    height: 40rem;
 }
 
 .poke-card-ground {
@@ -131,6 +130,7 @@
     padding: 0;
     display: flex;
     justify-content:space-around ;
+    
     li {
         list-style: none;
     }

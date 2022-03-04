@@ -1,149 +1,289 @@
-.poke-card {
-  margin: 2rem;
-}
-
 .poke-card-ground {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #b7963c;
   background-color: rgba(183, 150, 60, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-electric {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #efa30b;
   background-color: rgba(239, 163, 11, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-bug {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #a1b019;
   background-color: rgba(161, 176, 25, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-dark {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #513c2f;
   background-color: rgba(81, 60, 47, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-dragon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #755ddd;
   background-color: rgba(117, 93, 221, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-fairy {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #f2acf2;
   background-color: rgba(242, 172, 242, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-fighting {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #7e331c;
   background-color: rgba(126, 51, 28, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-fire {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #da3005;
   background-color: rgba(218, 48, 5, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-flying {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #91a4f2;
   background-color: rgba(145, 164, 242, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-ghost {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #5757a7;
   background-color: rgba(87, 87, 167, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-grass {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #6dbe30;
   background-color: rgba(109, 190, 48, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-ice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #a3e7fd;
   background-color: rgba(163, 231, 253, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-normal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #cbc7bf;
   background-color: rgba(203, 199, 191, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-poison {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #6b246e;
   background-color: rgba(107, 36, 110, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-psychic {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #dc3165;
   background-color: rgba(220, 49, 101, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-rock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #b39b50;
   background-color: rgba(179, 155, 80, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-steel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #b8b8c6;
   background-color: rgba(184, 184, 198, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .poke-card-water {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid;
   border-width: 10px;
   border-color: #3496f8;
   background-color: rgba(52, 150, 248, 0.5);
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 }
 
 .title-div {
