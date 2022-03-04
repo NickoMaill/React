@@ -1,6 +1,6 @@
 //MODULE IMPORT
 import { BrowserRouter, Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
-import { useState, createContext, useEffect } from "react"
+import { useState, createContext, useEffect } from "react";
 import { Context } from "../src/Context/NewsContext";
 
 //COMPONENTS IMPORT
@@ -22,16 +22,21 @@ export default function App() {
 
   //declare state
 
-  const [isLogged, setIsLogged] = useState(false)
-  const [gameNews, setGameNews] = useState([])
-  const [pokemon, setPokemon] = useState({})
-  const [weeklyPokemon, setWeeklyPokemon] = useState([])
+  const [isLogged, setIsLogged] = useState(false);
+  const [gameNews, setGameNews] = useState([]);
+  const [pokemon, setPokemon] = useState({});
+  const [type, setType] = useState("");
+  const [id, setId] = useState(null);
+  const [locationArea, setArea] = useState([]);
+  const [weeklyPokemon, setWeeklyPokemon] = useState([]);
+  const [addToTeam, setAddToTeam] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [newsIsLoaded, setNewsIsLoaded] = useState(false);
   const [isWeeklyLoaded, setIsWeeklyLoaded] = useState(false);
-  const [isPokeLoaded, setIsPokeLoaded] = useState(false)
-  const [type, setType] = useState("")
-  const [id, setId] = useState(null)
-  const [currentPokemon, setCurrentPokemon] = useState({})
+  const [isPokeLoaded, setIsPokeLoaded] = useState(false);
+  const [currentPokemon, setCurrentPokemon] = useState({});
+  const [modalIsOpen, setIsOpen] = useState(false);
+
 
   //setting value for context
 
@@ -48,14 +53,23 @@ export default function App() {
     pokemon: pokemon,
     setPokemon: setPokemon,
 
+    locationArea: locationArea,
+    setArea: setArea,
+
     currentPokemon: currentPokemon,
     setCurrentPokemon: setCurrentPokemon,
 
     weeklyPokemon: weeklyPokemon,
     setWeeklyPokemon: setWeeklyPokemon,
 
+    addToTeam: addToTeam,
+    setAddToTeam: setAddToTeam,
+
     isWeeklyLoaded: isWeeklyLoaded,
     setIsWeeklyLoaded: setIsWeeklyLoaded,
+
+    newsIsLoaded: newsIsLoaded,
+    setNewsIsLoaded: setNewsIsLoaded,
 
     type: type,
     setType: setType,
@@ -64,8 +78,12 @@ export default function App() {
     setId: setId,
 
     isPokeLoaded: isPokeLoaded,
-    setIsPokeLoaded: setIsPokeLoaded
-  }
+    setIsPokeLoaded: setIsPokeLoaded,
+    
+    modalIsOpen: modalIsOpen,
+    setIsOpen: setIsOpen,
+
+  };
 
   //App routing
 

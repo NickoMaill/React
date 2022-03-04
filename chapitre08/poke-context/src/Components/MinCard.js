@@ -18,11 +18,11 @@ export default function MineCard(props) {
             <span>id n° {props.id}</span>
             <button
                 onClick={props.onClick}
-                value={stateContext.pokemon[props.keyId].name}
-                className="button">
-                <p
-                >Show Stats
-                </p>
+                value={stateContext.pokemon[props.keyId].url}
+                className="pokeButton">
+                
+                Show Stats
+                
             </button>
 
         </div>

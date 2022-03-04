@@ -24,7 +24,7 @@ p{
     border-radius: 4px;
     background-color: #f4511e;
     border: none;
-    color: #FFFFFF;
+    color: #fff;
     text-align: center;
     font-size: 1rem;
     padding: 1rem;
@@ -34,32 +34,18 @@ p{
     margin: 5px;
 }
 
-.button p {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-    text-decoration: none;
-    color: rgb(255, 255, 255);
+.pokeButton{
+  width: 9rem;
+  padding: 0.5rem;
+  background-color: #f4511e;
+  color: #fff;
+  border: solid 2px #f4511e;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  transition: 300ms;
+  &:hover{
+    background-color: #fff;
+    color: #f4511e;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.42);
   }
-  
-  .button p:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-  }
-  
-  .button:hover p{
-    padding-right: 25px;
-    opacity: 1;
-    right: 0;
-  }
-
-    
-  .button:hover p:after {
-    opacity: 1;
-    right: 0;
-  }
+}

@@ -1,10 +1,11 @@
 //MODULE IMPORT
 import { useState, useContext, useEffect } from "react";
 import { Context } from "../Context/NewsContext";
+import { customStyles } from "../Modules/customStyles";
 
 //COMPONENTS IMPORT
-import MineCard from "../Components/MinCard"
-import Card from "../Components/Card"
+import MineCard from "../Components/MinCard";
+import Card from "../Components/Card";
 
 //FUNCTION IMPORT
 import idFormat from "../Modules/idFormat";
@@ -13,11 +14,10 @@ import fetchStatsPokemon from "../Modules/fetchStatsPokemon";
 
 //LIBRARY IMPORT
 import Modal from 'react-modal';
-import ReactDOM from 'react-dom';
 
 //STYLE IMPORT
-import "../App.css"
-import "../Styles/Pokedex.css"
+import "../App.css";
+import "../Styles/Pokedex.css";
 
 // Main Function App
 export default function Pokedex() {
@@ -28,7 +28,8 @@ export default function Pokedex() {
     // Create State
     const [limitFetch, setLimitFetch] = useState(20)
     const [loadClass, setLoadClass] = useState("btn-load-next")
-    const [modalIsOpen, setIsOpen] = useState(false);
+    const [teamClass, setTeamClass] = useState("no-added")
+
 
 
     // function for load more pokemon pokedex start at "limit=20"
@@ -38,56 +39,79 @@ export default function Pokedex() {
 
     }
 
-    //Style for Modal-react
-    const customStyles = {
-        content: {
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
-        },
-    };
-
     Modal.setAppElement("#root");
 
-    let subtitle;
     function openModal() {
-        setIsOpen(true);
+        stateContext.setIsOpen(true);
     }
 
     function closeModal() {
-        setIsOpen(false);
+        stateContext.setIsOpen(false);
     }
 
     const displayStats = (e) => {
-            fetchStatsPokemon(e)
+        fetchStatsPokemon(e.target.value)
             .then(res => {
+
+                fetchStatsPokemon(res.location_area_encounters)
+                    .then(res => {
+                        console.log(res);
+                        stateContext.setArea(res)
+                    })
+
                 stateContext.setCurrentPokemon(res)
                 stateContext.setType(res.types[0].type.name)
                 openModal()
+
             })
             .catch((err) => {
                 console.error("Error while charging a Pokemon", err);
             })
     }
 
+    const addPokemonToTeam = () => {
+
+        if (stateContext.addToTeam.includes(stateContext.currentPokemon.id)) {
+            console.warn("already added!");
+            return true
+        } else if (stateContext.addToTeam.length === 6) {
+            console.warn("limit to 6 pokemon");
+            return true
+        } else {
+            stateContext.setAddToTeam(prevPoke => [...prevPoke, stateContext.currentPokemon.id])
+            setTeamClass("")
+
+            console.log(stateContext.addToTeam);
+
+        }
+
+    }
 
     useEffect(() => {
-        
-            fetchListPokemon(limitFetch)
+
+        fetchListPokemon(limitFetch)
             .then(res => {
                 stateContext.setPokemon(res.results)
                 setLoadClass("btn-load-next")
                 stateContext.setIsLoaded(false)
                 stateContext.setIsPokeLoaded(true)
 
+
             })
             .catch((err) => {
                 console.error("Error while charging a Pokemon", err);
             })
     }, [limitFetch])
+
+    useEffect(() => {
+        if (stateContext.addToTeam.includes(stateContext.currentPokemon.id)) {
+            setTeamClass("")
+            return true
+        } else{
+            setTeamClass("no-added")
+        }
+
+    }, [stateContext.currentPokemon])
 
 
     if (stateContext.isPokeLoaded !== true) {
@@ -99,7 +123,6 @@ export default function Pokedex() {
 
                     <h3>We are chargin the Pokedex ...</h3>
 
-                    {/* <div className="lds-facebook"><div></div><div></div><div></div></div> */}
                     <img className="load" src={require("../assets/images/download.png")} alt="" />
 
                 </div>
@@ -134,14 +157,15 @@ export default function Pokedex() {
                         })}
 
                         <Modal
-                            isOpen={modalIsOpen}
+                            isOpen={stateContext.modalIsOpen}
                             onRequestClose={closeModal}
                             style={customStyles}
                             contentLabel="Example Modal"
                         >
 
                             <Card
-
+                                addTeam={addPokemonToTeam}
+                                teamAdd={teamClass}
                             />
 
 

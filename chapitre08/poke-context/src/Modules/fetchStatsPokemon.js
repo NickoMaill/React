@@ -1,11 +1,8 @@
-const fetchStatsPokemon = (e) => {
-
-    const fetchUrl = `https://pokeapi.co/api/v2/pokemon/${e.target.value}`
-
+const fetchStatsPokemon = (url) => {
+    
     return (
-        fetch(fetchUrl)
+        fetch(url)
             .then(res => res.json())
-
             .catch((err) => {
                 console.error("Error while charging a Pokemon", err);
 
