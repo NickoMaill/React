@@ -1,11 +1,11 @@
 import { useState, useContext, useEffect } from "react";
 import { Context } from "../Context/NewsContext";
+import { customStyles } from "../Utils/customStyles";
 import idFormat from "../Utils/idFormat";
 
 import MineCard from "../Components/MinCard"
 import Card from "../Components/Card"
 import fetchListPokemon from "../Utils/fetchListPokemon";
-import { customStyles } from "../Utils/customStyles";
 import Modal from "react-modal/lib/components/Modal";
 import fetchStatsPokemon from "../Utils/fetchStatsPokemon";
 // import fetchStatsPokemon from "../Utils/fetchStatsPokemon";
@@ -34,7 +34,6 @@ export default function Team() {
 
                 fetchStatsPokemon(res.location_area_encounters)
                     .then(res => {
-                        console.log(res);
                         stateContext.setArea(res)
                     })
 
@@ -71,8 +70,6 @@ export default function Team() {
 
                 <div className="pokedex-wrapper">
 
-                    
-
                         {stateContext.team.length === 0 ? (
                             <h2>Vous n'avez pas encore de favoris</h2>
 
@@ -80,9 +77,7 @@ export default function Team() {
                             :
 
                             isLoaded ? stateContext.team.map((userTeam, i) => {
-                                console.log(userTeam);
                                 if (i === 0 || i <= stateContext.team.length) {
-                                    console.log(stateContext.pokemon[stateContext.team[i]]);
                                     return (
                                         <MineCard
                                             key={i}
@@ -103,8 +98,6 @@ export default function Team() {
                                 </div>
 
                         }
-
-                    
 
                     <Modal
                         isOpen={stateContext.modalIsOpen}

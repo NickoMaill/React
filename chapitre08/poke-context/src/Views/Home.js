@@ -20,7 +20,7 @@ import dayjs from "dayjs";
 import Modal from 'react-modal';
 
 //FILES IMPORT
-import offlineApi from "../data/offlineApi.json" //temporary, for save some requests, limited to 2500 per month.....(freeApi)
+// import offlineApi from "../data/offlineApi.json" //temporary, for save some requests, limited to 2500 per month.....(freeApi)
 
 //STYLE IMPORT
 import "../Styles/Home.css";
@@ -36,6 +36,8 @@ export default function Home() {
     const [newsIsLoaded, setNewsIsLoaded] = useState(false);
     const [weeklyLoaded, setWeeklyLoaded] = useState(false)
 
+    //MODAL Function
+
     Modal.setAppElement("#root");
 
     function openModal() {
@@ -46,6 +48,7 @@ export default function Home() {
         stateContext.setIsOpen(false);
     }
 
+    //Display STATS Card
     const displayStats = (e) => {
         fetchStatsPokemon(e.target.value)
             .then(res => {
@@ -99,7 +102,6 @@ export default function Home() {
                 const res = randomId(3, 721)
                 stateContext.setWeeklyPokemon(res)
                 localStorage.setItem('weekPokemon', JSON.stringify(res))
-                // console.log(stateContext.weeklyPokemon);
 
             } else {
                 return stateContext.weeklyPokemon
@@ -153,8 +155,6 @@ export default function Home() {
                         {weeklyLoaded ? stateContext.weeklyPokemon.map((week, i) => {
 
                             if (i === 0 || i <= stateContext.weeklyPokemon.length) {
-                                console.log(i);
-                                console.log(stateContext.weeklyPokemon);
                                 return (
 
                                     <MineCard

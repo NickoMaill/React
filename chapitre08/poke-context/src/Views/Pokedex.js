@@ -18,7 +18,6 @@ import Modal from 'react-modal';
 //STYLE IMPORT
 import "../App.css";
 import "../Styles/Pokedex.css";
-import { legendaryPokemon } from "../Utils/legendaryPokemon";
 
 // Main Function App
 export default function Pokedex() {
@@ -41,6 +40,7 @@ export default function Pokedex() {
 
     }
 
+    //MODAL Function
     Modal.setAppElement("#root");
 
     function openModal() {
@@ -57,7 +57,6 @@ export default function Pokedex() {
 
                 fetchStatsPokemon(res.location_area_encounters)
                     .then(res => {
-                        console.log(res);
                         stateContext.setArea(res)
                     })
 
@@ -71,11 +70,15 @@ export default function Pokedex() {
             })
     }
 
+    // function to add a pokemon to userTeam
+
     const addPokemonToTeam = () => {
 
         if (stateContext.team.includes(stateContext.currentPokemon.id)) {
-            console.warn("already added!");
-            // console.log(legendaryPokemon[1]);
+            let tempTeam = stateContext.team
+            stateContext.setTeam(tempTeam.splice(tempTeam.indexOf(stateContext.currentPokemon.id), 1));
+            stateContext.setTeam(tempTeam)
+            setTeamClass("no-added")
             return
 
         } else if (stateContext.team.length === 6) {
@@ -85,7 +88,6 @@ export default function Pokedex() {
         } else {
             stateContext.setTeam(prevPoke => [...prevPoke, stateContext.currentPokemon.id])
             setTeamClass("")
-            console.log(stateContext.team);
 
         }
 
@@ -93,9 +95,8 @@ export default function Pokedex() {
 
     useEffect(() => {
         localStorage.setItem('userTeam', JSON.stringify(stateContext.team))
+        console.log(stateContext.team);
     }, [stateContext.team])
-
-    console.log(stateContext.team);
 
     useEffect(() => {
 
@@ -112,16 +113,16 @@ export default function Pokedex() {
             })
     }, [limitFetch])
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (stateContext.team.includes(stateContext.currentPokemon.id)) {
-            setTeamClass("")
-            return true
-        } else {
-            setTeamClass("no-added")
-        }
+    //     if (stateContext.team.includes(stateContext.currentPokemon.id)) {
+    //         setTeamClass("")
+    //         return true
+    //     } else {
+    //         setTeamClass("no-added")
+    //     }
 
-    }, [stateContext.currentPokemon])
+    // }, [stateContext.currentPokemon])
 
     return (
         <div className="pokedex-container">
@@ -166,7 +167,7 @@ export default function Pokedex() {
 
                         <Card
                             addTeam={addPokemonToTeam}
-                            teamAdd={teamClass}
+                            teamAdd={!stateContext.team.includes(stateContext.currentPokemon.id) && "no-added"}
                         />
 
                     </Modal>
