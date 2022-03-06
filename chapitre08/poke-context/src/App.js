@@ -23,6 +23,8 @@ export default function App() {
   //declare state
 
   const [isLogged, setIsLogged] = useState(false);
+  const [userName, setUserName] = useState("UserName");
+  // const [userDataBase, setUserDataBase] = useState(JSON.parse(localStorage.getItem("userAccount")) || [])
   const [gameNews, setGameNews] = useState([]);
   const [pokemon, setPokemon] = useState({});
   const [type, setType] = useState("");
@@ -30,42 +32,54 @@ export default function App() {
   const [locationArea, setArea] = useState([]);
   const [weeklyPokemon, setWeeklyPokemon] = useState(JSON.parse(localStorage.getItem("weekPokemon")) || []);
   const [team, setTeam] = useState(JSON.parse(localStorage.getItem("userTeam")) || []);
+  const [pokeballStock, setPokeballStock] = useState(10)
+  const [pokeDollard, setPokeDollard] = useState(2000)
   const [currentPokemon, setCurrentPokemon] = useState({});
   const [modalIsOpen, setIsOpen] = useState(false);
+
 
 
   //setting value for context
 
   const value = {
-    isLogged: isLogged,
-    setIsLogged: setIsLogged,
+    isLogged,
+    setIsLogged,
 
-    gameNews: gameNews,
-    setGameNews: setGameNews,
+    userName,
+    setUserName,
 
-    pokemon: pokemon,
-    setPokemon: setPokemon,
+    gameNews,
+    setGameNews,
 
-    locationArea: locationArea,
-    setArea: setArea,
+    pokemon,
+    setPokemon,
 
-    currentPokemon: currentPokemon,
-    setCurrentPokemon: setCurrentPokemon,
+    locationArea,
+    setArea,
 
-    weeklyPokemon: weeklyPokemon,
-    setWeeklyPokemon: setWeeklyPokemon,
+    currentPokemon,
+    setCurrentPokemon,
 
-    team: team,
-    setTeam: setTeam,
+    weeklyPokemon,
+    setWeeklyPokemon,
 
-    type: type,
-    setType: setType,
+    team,
+    setTeam,
 
-    id: id,
-    setId: setId,
+    pokeballStock,
+    setPokeballStock,
+
+    pokeDollard,
+    setPokeDollard,
+
+    type,
+    setType,
+
+    id,
+    setId,
     
-    modalIsOpen: modalIsOpen,
-    setIsOpen: setIsOpen,
+    modalIsOpen,
+    setIsOpen,
 
   };
 

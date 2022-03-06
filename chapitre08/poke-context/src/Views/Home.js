@@ -21,9 +21,10 @@ import Modal from 'react-modal';
 
 //FILES IMPORT
 // import offlineApi from "../data/offlineApi.json" //temporary, for save some requests, limited to 2500 per month.....(freeApi)
+// import opponents from "../data/opponents.json"
 
 //STYLE IMPORT
-import "../Styles/Home.css";
+import "../Sass/Home.scss";
 
 //Main function home
 
@@ -195,7 +196,7 @@ export default function Home() {
                 <div className="img-container">
 
                     <div className="header-img-div">
-                        <img className="header-img" src={require("../assets/images/pokemon-Header.png")} alt="" />
+                        <img className="header-img" src={require("../assets/images/pokemon-Header.webp")} alt="" />
                     </div>
 
                 </div>

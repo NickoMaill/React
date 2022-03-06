@@ -17,7 +17,7 @@ import Modal from 'react-modal';
 
 //STYLE IMPORT
 import "../App.css";
-import "../Styles/Pokedex.css";
+import "../Sass/Pokedex.scss";
 
 // Main Function App
 export default function Pokedex() {
@@ -72,25 +72,46 @@ export default function Pokedex() {
 
     // function to add a pokemon to userTeam
 
-    const addPokemonToTeam = () => {
+    const catcheEmAll = () => {
 
         if (stateContext.team.includes(stateContext.currentPokemon.id)) {
             let tempTeam = stateContext.team
             stateContext.setTeam(tempTeam.splice(tempTeam.indexOf(stateContext.currentPokemon.id), 1));
             stateContext.setTeam(tempTeam)
             setTeamClass("no-added")
-            return
-
-        } else if (stateContext.team.length === 6) {
-            console.warn("limit to 6 pokemon");
-            return
 
         } else {
-            stateContext.setTeam(prevPoke => [...prevPoke, stateContext.currentPokemon.id])
-            setTeamClass("")
+
+            if (stateContext.pokeballStock === 0) {
+                console.warn("plus de pokeball");
+                return
+
+            } else {
+
+                if (stateContext.team.length === 6) {
+                    console.warn("limit to 6 pokemon");
+                    return
+
+                } else {
+                    const catchPokemon = Math.random() < 0.3
+                    console.log(catchPokemon);
+
+                    if (catchPokemon === false) {
+                        console.warn("oups")
+                        stateContext.setPokeballStock(stateContext.pokeballStock - 1)
+                        return
+
+                    } else {
+                        stateContext.setTeam(prevPoke => [...prevPoke, stateContext.currentPokemon.id])
+                        setTeamClass("");
+                        stateContext.setPokeballStock(stateContext.pokeballStock - 1)
+
+                    }
+                }
+
+            }
 
         }
-
     }
 
     useEffect(() => {
@@ -113,17 +134,6 @@ export default function Pokedex() {
             })
     }, [limitFetch])
 
-    // useEffect(() => {
-
-    //     if (stateContext.team.includes(stateContext.currentPokemon.id)) {
-    //         setTeamClass("")
-    //         return true
-    //     } else {
-    //         setTeamClass("no-added")
-    //     }
-
-    // }, [stateContext.currentPokemon])
-
     return (
         <div className="pokedex-container">
 
@@ -142,7 +152,7 @@ export default function Pokedex() {
                                     keyId={i}
                                     id={idFormat(i + 1)}
                                     onClick={displayStats}
-                                    fav="../assets/images/Header-icon/pokeball.png"
+                                    fav="../assets/images/Header-icon/pokeball.webp"
                                 />
 
                             )
@@ -166,7 +176,7 @@ export default function Pokedex() {
                     >
 
                         <Card
-                            addTeam={addPokemonToTeam}
+                            addTeam={catcheEmAll}
                             teamAdd={!stateContext.team.includes(stateContext.currentPokemon.id) && "no-added"}
                         />
 

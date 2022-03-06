@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Context } from "../Context/NewsContext";
-import "../Styles/NewsCard.css"
+import "../Sass/NewsCard.scss"
 
 export default function NewsCard(props) {
     const stateContext = useContext(Context);

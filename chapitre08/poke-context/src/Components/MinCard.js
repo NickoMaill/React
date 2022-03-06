@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Context } from "../Context/NewsContext";
-import "../Styles/MinCard.css"
+import "../Sass/MinCard.scss"
 
 export default function MineCard(props) {
     const stateContext = useContext(Context);
@@ -11,7 +11,7 @@ export default function MineCard(props) {
             <h3>{stateContext.pokemon[props.keyId].name}</h3>
             <img
                 className="pokemon-sprite"
-                src={require(`../assets/images/officialSprites/${props.id}.png`)}
+                src={require(`../assets/images/officialSprites/${props.id}.webp`)}
                 alt={stateContext.pokemon[props.keyId].name}
                 title={stateContext.pokemon[props.keyId].name}
             />

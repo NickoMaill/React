@@ -9,7 +9,7 @@ import fetchListPokemon from "../Utils/fetchListPokemon";
 import Modal from "react-modal/lib/components/Modal";
 import fetchStatsPokemon from "../Utils/fetchStatsPokemon";
 // import fetchStatsPokemon from "../Utils/fetchStatsPokemon";
-import "../Styles/Pokedex.css";
+import "../Sass/Pokedex.scss";
 
 export default function Team() {
 

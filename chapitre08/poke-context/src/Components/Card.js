@@ -3,7 +3,7 @@ import { Context } from "../Context/NewsContext";
 import idFormat from "../Utils/idFormat";
 
 
-import "../Styles/Card.css"
+import "../Sass/Card.scss"
 
 export default function Card(props) {
     const stateContext = useContext(Context);
@@ -27,7 +27,7 @@ export default function Card(props) {
                     />
                     <img
                         className="sprites"
-                        src={require(`../assets/images/officialSprites/${idFormat(stateContext.currentPokemon.id)}.png`)}
+                        src={require(`../assets/images/officialSprites/${idFormat(stateContext.currentPokemon.id)}.webp`)}
                         alt={`picture of ${stateContext.currentPokemon.name}`}
                         title={stateContext.currentPokemon.name}
                     />
@@ -44,7 +44,7 @@ export default function Card(props) {
                     value="hohoho"
                     className="team-button"
                 >
-                    <img className={`team-icon ${props.teamAdd}`} src={require("../assets/images/Header-icon/pokeball.png")} alt="team icon" />
+                    <img className={`team-icon ${props.teamAdd}`} src={require("../assets/images/Header-icon/pokeball.webp")} alt="team icon" />
                 </button>
 
 
@@ -112,7 +112,7 @@ export default function Card(props) {
                     <h4 className="title-stats">Types</h4>
                     <ul className="type-ul">
                         {stateContext.currentPokemon.types.map((types, i) => (
-                            <li key={i}><img className="types-img" src={require(`/src/assets/images/Types/${types.type.name}.png`)} /></li>
+                            <li key={i}><img className="types-img" src={require(`/src/assets/images/Types/${types.type.name}.webp`)} /></li>
                         ))}
                     </ul>
                 </div>
